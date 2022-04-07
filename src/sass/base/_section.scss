@@ -1,0 +1,25 @@
+.section {
+  padding-top: 20px;
+  padding-bottom: 40px;
+
+  &--no-padding-top {
+    padding-top: 0;
+  }
+
+  &--no-padding-bottom {
+    padding-bottom: 0;
+  }
+
+  @media screen and (min-width: $tablet) {
+    padding-top: 60px;
+    padding-bottom: 60px;
+
+    &--no-padding-top {
+      padding-top: 0;
+    }
+
+    &--no-padding-bottom {
+      padding-bottom: 0;
+    }
+  }
+}
