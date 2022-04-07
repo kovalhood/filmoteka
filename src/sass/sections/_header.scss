@@ -1,10 +1,32 @@
-.controlls {
+.controls {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 }
 
-.search-form {
+.search-form,
+.library-buttons {
   display: flex;
   justify-content: center;
 }
+
+.menu__item{
+  display: inline-flex;
+  position: relative;
+  cursor: pointer;
+}
+
+.menu__item--current::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  width: 100%;
+  background-color: $accent-color;
+  border: 2px solid $accent-color;
+  border-radius: 2px;
+}
+
+.controls-switcher {
+  display:none;
+}
+
