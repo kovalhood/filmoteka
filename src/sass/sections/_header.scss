@@ -1,3 +1,15 @@
+.page-header{
+  padding-top: 40px;
+  padding-bottom: 90px;
+
+
+  @media screen and (min-width: $tablet) {
+    padding-bottom: 80px;
+  }
+
+  background-color: black;
+}
+
 .controls {
   display: flex;
   flex-direction: row;
@@ -10,19 +22,35 @@
   justify-content: center;
 }
 
+.logo--text{
+  color: $white-color;
+  font-size: 30px;
+  cursor: pointer;
+}
+
 .menu__item{
   display: inline-flex;
   position: relative;
+  padding: 3px 0;
+
+  color: $white-color;
+  font-size: 12px;
+  text-transform: uppercase;
   cursor: pointer;
+}
+
+.menu__item:not(:last-child){
+  margin-right: 40px;
 }
 
 .menu__item--current::after {
   content: '';
   position: absolute;
-  bottom: -1px;
+  bottom: 0;
   width: 100%;
   background-color: $accent-color;
-  border: 2px solid $accent-color;
+  height: 3px;
+  border: 1px solid $accent-color;
   border-radius: 2px;
 }
 
