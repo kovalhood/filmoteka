@@ -5,4 +5,4 @@ const e=document.querySelector(".search-form"),t=document.querySelector(".librar
 },{}],"Focm":[function(require,module,exports) {
 "use strict";require("./sass/main.scss"),require("../src/js/header.js"),require("../src/js/fetch-search.js"),require("../src/js/search-results.js"),require("../src/js/pagination.js"),require("../src/js/footer.js"),require("../src/js/modal.js");
 },{"./sass/main.scss":"clu1","../src/js/header.js":"cGsR","../src/js/fetch-search.js":"clu1","../src/js/search-results.js":"clu1","../src/js/pagination.js":"clu1","../src/js/footer.js":"clu1","../src/js/modal.js":"clu1"}]},{},["Focm"], null)
-//# sourceMappingURL=/filmoteka/src.d7782952.js.map
+//# sourceMappingURL=/filmoteka/src.78873645.js.map
