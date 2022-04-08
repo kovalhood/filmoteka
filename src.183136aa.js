@@ -2,7 +2,9 @@ parcelRequire=function(e,r,t,n){var i,o="function"==typeof parcelRequire&&parcel
 
 },{}],"cGsR":[function(require,module,exports) {
 const e=document.querySelector(".search-form"),t=document.querySelector(".library-buttons"),s=document.querySelector(".tab-home"),c=document.querySelector(".tab-library");function r(){s.classList.add("menu__item--current"),c.classList.remove("menu__item--current"),e.classList.remove("controls-switcher"),t.classList.add("controls-switcher")}function n(){s.classList.remove("menu__item--current"),c.classList.add("menu__item--current"),e.classList.add("controls-switcher"),t.classList.remove("controls-switcher")}t.classList.add("controls-switcher"),s.classList.add("menu__item--current"),s.addEventListener("click",r),c.addEventListener("click",n);
+},{}],"FDid":[function(require,module,exports) {
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.default=void 0;const e="https://api.themoviedb.org/3/search/movie",t="387a2500e741e87c896db50117c25d75",s={headers:{Authorization:t}};class r{constructor(){this.searchQuery="",this.page=1}async fetchMovies(){const r=`${e}?api_key=${t}&language=en-US&page=${this.page}&query=${this.searchQuery}`,a=await fetch(r,s),{movies:i}=await a.json();return this.incrementPage(),i}incrementPage(){this.page+=1}resetPage(){this.page=1}get query(){return this.searchQuery}set query(e){this.searchQuery=e}}exports.default=r;
 },{}],"Focm":[function(require,module,exports) {
 "use strict";require("./sass/main.scss"),require("../src/js/header.js"),require("../src/js/fetch-search.js"),require("../src/js/search-results.js"),require("../src/js/pagination.js"),require("../src/js/footer.js"),require("../src/js/modal.js");
-},{"./sass/main.scss":"clu1","../src/js/header.js":"cGsR","../src/js/fetch-search.js":"clu1","../src/js/search-results.js":"clu1","../src/js/pagination.js":"clu1","../src/js/footer.js":"clu1","../src/js/modal.js":"clu1"}]},{},["Focm"], null)
-//# sourceMappingURL=/filmoteka/src.78873645.js.map
+},{"./sass/main.scss":"clu1","../src/js/header.js":"cGsR","../src/js/fetch-search.js":"FDid","../src/js/search-results.js":"clu1","../src/js/pagination.js":"clu1","../src/js/footer.js":"clu1","../src/js/modal.js":"clu1"}]},{},["Focm"], null)
+//# sourceMappingURL=/filmoteka/src.183136aa.js.map
