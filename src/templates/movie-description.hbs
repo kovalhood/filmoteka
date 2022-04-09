@@ -1,1 +1,43 @@
-{{!-- Созданным элементам сразу нужно давать понятные классы для дальнейшей удобной стилизации --}}
+{{! Созданным элементам сразу нужно давать понятные классы для дальнейшей удобной стилизации }}
+<div class='movie-card-modal'>
+  <div class='movie-card__img-wrapper'>
+    <img
+      class='movie-card-modal__img'
+      src='https://image.tmdb.org/t/p/w500{{poster_path}}'
+      alt='movie poster {{title}}'
+      loading='lazy'
+    />
+  </div>
+  <div class='movie-card-modal__info-box'>
+    <h3 class='movie-card-modal__title'>{{title}}</h3>
+    <div class='movie-stats'>
+      <ul class='movie-stats__list list'>
+        <li class='movie-stats__item'>
+          Vote/Votes
+          <span class='movie-stats__item--accent'>{{vote_average}} </span>
+          /
+          <span class='movie-stats__item--data'>{{vote_count}}</span>
+        </li>
+
+        <li class='movie-stats__item'>
+          Popularity
+          <span class='movie-stats__item--data'>{{popularity}}</span>
+        </li>
+
+        <li class='movie-stats__item'>
+          Original Title
+          <span class='movie-stats__item--data'>{{original_title}}</span>
+        </li>
+
+        <li class='movie-stats__item'>
+          Genre
+          <span class='movie-stats__item--data'>{{genre_ids}}</span>
+        </li>
+      </ul>
+
+      <p class='movie-about__title'>About</p>
+      <p class='movie-about__info'>{{overview}}</p>
+
+    </div>
+  </div>
+</div>
