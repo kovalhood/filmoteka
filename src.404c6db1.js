@@ -9,4 +9,4 @@ const e=document.querySelector(".page-header"),s=document.querySelector(".search
 },{}],"Focm":[function(require,module,exports) {
 "use strict";require("./sass/main.scss"),require("../src/js/header.js"),require("../src/js/fetch-search.js"),require("../src/js/search-results.js"),require("../src/js/pagination.js"),require("../src/js/footer.js"),require("../src/js/modal.js");
 },{"./sass/main.scss":"clu1","../src/js/header.js":"cGsR","../src/js/fetch-search.js":"FDid","../src/js/search-results.js":"UnfC","../src/js/pagination.js":"UnfC","../src/js/footer.js":"UnfC","../src/js/modal.js":"UnfC"}]},{},["Focm"], null)
-//# sourceMappingURL=/filmoteka/src.e314deb4.js.map
+//# sourceMappingURL=/filmoteka/src.404c6db1.js.map
