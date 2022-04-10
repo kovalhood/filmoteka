@@ -107,14 +107,14 @@
   cursor: pointer;
 
   &__text {
-display: none;
+    display: none;
+    
     @media screen and (min-width: $tablet) {
       display: inline;
       margin-left: 10px;
       color: $white-color;
       font-size: 30px;
     }
-    
   }
 }
 
