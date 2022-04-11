@@ -1,0 +1,76 @@
+// home + my library
+// mobile version
+.movie-item__poster {
+   height: 402px;
+   width: 280px;
+ 
+   border: 1px solid #000000;
+   border-radius: 5px;
+   cursor: pointer;
+  
+ 
+// tablet version
+@media screen and (min-width: $tablet) {
+   height: 455px;
+   width: 336px;
+}
+ 
+// desktop version
+@media screen and (min-width: $desktop) {
+   height: 449px;
+   width: 309px;
+}
+}
+ 
+// for all versions the same
+.movie-item__title {
+font-weight: 500;
+font-size: 12px;
+line-height: 1.33;
+text-transform: uppercase;
+ 
+color: #000000;
+}
+ 
+.movie-item__description {
+font-weight: 500;
+font-size: 12px;
+line-height: 1.33;
+ 
+color: #ff6b08;
+}
+.movie-rating {
+font-weight: 500;
+font-size: 12px;
+line-height: 1.17;
+text-transform: uppercase;
+
+color: #FFFFFF;
+background: #FF6B01;
+border-radius: 5px;
+display: flex;
+width: 36px;
+height: 16px;
+justify-content: center;
+align-items: center;
+}
+ 
+// .grid {
+//   list-style: none;
+//   padding: 0;
+//   display: flex;
+//   flex-wrap: wrap;
+//   justify-content: center;
+//   margin-left: -8px;
+//   margin-right: -8px;
+//   margin-bottom: -16px;
+//   margin-top: 0;
+// }
+ 
+// .grid__item {
+//   flex-basis: calc(100% / 3 - 16px);
+//   min-width: 240px;
+//   margin-right: 8px;
+//   margin-left: 8px;
+//   margin-bottom: 16px;
+// }
