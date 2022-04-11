@@ -20,7 +20,7 @@ export default class MoviesApiService {
     const url = `${BASE_URL}?api_key=${API_KEY}&language=en-US&page=${this.page}&query=${this.searchQuery}`;
 
     const response = await fetch(url, options);
-    const { movies } = await response.json();
+    const movies = await response.json();
     this.incrementPage();
     return movies;
   }

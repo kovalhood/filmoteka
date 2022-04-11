@@ -1,6 +1,7 @@
 import moviesTmpl from '../templates/movie-card.hbs';
 import movieCardDescTmpl from '../templates/movie-description.hbs';
 // console.log(moviesTmpl);
+import { fetchTrendyMovies } from './fetch-trendy-movies';
 import MoviesApiService from './fetch-search';
 // console.log(MoviesApiService);
 
@@ -11,16 +12,33 @@ const imgPath = 'https://image.tmdb.org/t/p/w500';
 
 const searchFormRef = document.querySelector('.search-form');
 const moviesListRef = document.querySelector('.js-movies__list');
-console.log(searchFormRef);
+
 const categories = {
   trending: '/trending/movie/week',
   querySearch: '/search/movie',
   genre: '',
 };
 
+//Query movie
+movieApiService.fetchMovies().then(res => {
+  console.log(res);
+  // console.log(page);
+});
+
+function onSearchFormSubmit(e) {
+  e.preventDefault();
+  console.log(e);
+  k;
+  movieApiService.query = e.currentTarget.elements.searchQuery.value.trim();
+  console.log(e.currentTarget.elements.searchQuery.value);
+
+  // movieApiService.fetchMovie().then(data => {
+  //   console.log(data);
+  // });
+}
 // Розмітка при загрузці сторінки
 window.addEventListener('load', async function (event) {
-  fetchMovies()
+  fetchTrendyMovies()
     .then(movies => {
       // release_date.slice(0, 1);
       renderMarkup(movies);
@@ -32,11 +50,7 @@ function renderMarkup(movies) {
   moviesListRef.insertAdjacentHTML('beforeend', moviesTmpl(movies));
 }
 
-//Fetch Trendy Movies
-export async function fetchMovies() {
-  const response = await fetch(`${BASE_URL}${categories.trending}?api_key=${API_KEY}`);
-  const { results } = await response.json();
-
-  //   console.log(results);
-  return results;
-}
+// // fetchTrendyMovies().then(res => {
+//   console.log(res[0].release_date);
+//   console.log(res[0].release_date.slice(0, 4));
+// });
