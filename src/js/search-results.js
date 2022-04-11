@@ -1,5 +1,5 @@
-// import moviesTmpl from './templates/movie-card.hbs';
-// import movieDescriptionTmpl from './templates/movie-description.hbs';
+import moviesTmpl from '../templates/movie-card.hbs';
+import movieCardDescTmpl from '../templates/movie-description.hbs';
 // console.log(moviesTmpl);
 import MoviesApiService from './fetch-search';
 // console.log(MoviesApiService);
