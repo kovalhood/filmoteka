@@ -1,3 +1,14 @@
+
+// .movie-item__text {
+//     display: flex;
+//     flex-direction: column;
+    // margin-right: 9px;
+
+// @media screen and (min-width: $tablet) {
+//    margin-right: 8px;
+// }
+// }
+
 // home + my library
 // mobile version
 .movie-item__poster {
@@ -5,23 +16,35 @@
    width: 280px;
  
    border: 1px solid #000000;
+   border: transparent;
    border-radius: 5px;
-   cursor: pointer;
-  
  
+   cursor: pointer;
 // tablet version
 @media screen and (min-width: $tablet) {
    height: 455px;
    width: 336px;
 }
- 
 // desktop version
 @media screen and (min-width: $desktop) {
    height: 449px;
    width: 309px;
 }
 }
- 
+ .movie-item__text-container {
+  margin-top: 10px;
+
+@media screen and (min-width: $tablet) {
+  margin-top: 8px;
+}
+}
+.movie-item:not(:last-child) {
+    margin-bottom: 20px;
+
+@media screen and (min-width: $tablet) {
+    margin-bottom: 32px;
+}
+}
 // for all versions the same
 .movie-item__title {
 font-weight: 500;
@@ -29,7 +52,6 @@ font-size: 12px;
 line-height: 1.33;
 text-transform: uppercase;
  
-color: #000000;
 }
  
 .movie-item__description {
@@ -38,12 +60,15 @@ font-size: 12px;
 line-height: 1.33;
  
 color: #ff6b08;
+display: flex;
+margin-right: 9px;
 }
 .movie-rating {
 font-weight: 500;
 font-size: 12px;
 line-height: 1.17;
 text-transform: uppercase;
+margin-left: 9px;
 
 color: #FFFFFF;
 background: #FF6B01;
