@@ -1,3 +1,4 @@
+const header = document.querySelector('.page-header');
 const searchForm = document.querySelector('.search-form');
 const libraryButtons = document.querySelector('.library-buttons');
 const tabHome = document.querySelector('.tab-home');
@@ -14,6 +15,9 @@ function showSearchForm() {
     tabLibrary.classList.remove('menu__item--current');
     searchForm.classList.remove('controls-switcher');
     libraryButtons.classList.add('controls-switcher');
+
+    header.classList.add('background--search');
+    header.classList.remove('background--library');
 }
 
 function showLibraryButtons() {
@@ -21,4 +25,7 @@ function showLibraryButtons() {
     tabLibrary.classList.add('menu__item--current');
     searchForm.classList.add('controls-switcher');
     libraryButtons.classList.remove('controls-switcher');
+
+    header.classList.remove('background--search');
+    header.classList.add('background--library');
 }

@@ -1,1 +1,20 @@
-{{!-- Созданным элементам сразу нужно давать понятные классы для дальнейшей удобной стилизации --}}
+{{! Созданным элементам сразу нужно давать понятные классы для дальнейшей удобной стилизации }}
+{{#each this}}
+  <li class='movie-item' data-id=''>
+    <a href='#' class='movie-item__link link'>
+      <div class='movie-item__img-container'>
+        <img
+          class='movie-item__poster'
+          src='https://image.tmdb.org/t/p/w500{{poster_path}}'
+          alt='movie poster {{title}}'
+          loading='lazy'
+        />
+      </div>
+      <h3 class='movie-item__title'>{{title}}</h3>
+      <p>{{genre_ids}}</p>
+      |
+      {{release_date}}
+      <span class='movie-rating'>{{vote_average}}</span>
+    </a>
+  </li>
+{{/each}}
