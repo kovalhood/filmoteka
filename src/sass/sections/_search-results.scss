@@ -1,16 +1,33 @@
-
-// .movie-item__text {
-//     display: flex;
-//     flex-direction: column;
-    // margin-right: 9px;
-
-// @media screen and (min-width: $tablet) {
-//    margin-right: 8px;
-// }
-// }
-
+.movie-item.movie-item__link {
+    margin-left: auto;
+    margin-right: auto;
+}
+.movies__list {
+@media screen and (min-width: $tablet) {
+    display: flex;
+    flex-wrap: wrap;
+    // margin-left: -16px;
+    // margin-right: -16px;
+    margin: 0 -16px;
+    flex-basis: calc((100% - 32px)/2);
+}
+@media screen and (min-width: $desktop) {
+    flex-basis: calc((100% - 32px)/3);
+}
+}
+.movie-item {
+    @media screen and (min-width: $tablet)  {
+       margin: 0 16px; 
+    }
+     @media screen and (min-width: $desktop)  {
+       margin: 0 8px; 
+    }
+}
 // home + my library
 // mobile version
+.movie-item__link {
+  cursor: pointer;
+}
 .movie-item__poster {
    height: 402px;
    width: 280px;
@@ -19,13 +36,11 @@
    border: transparent;
    border-radius: 5px;
  
-   cursor: pointer;
-// tablet version
+//    cursor: pointer;
 @media screen and (min-width: $tablet) {
    height: 455px;
    width: 336px;
 }
-// desktop version
 @media screen and (min-width: $desktop) {
    height: 449px;
    width: 309px;
@@ -33,14 +48,12 @@
 }
  .movie-item__text-container {
   margin-top: 10px;
-
 @media screen and (min-width: $tablet) {
   margin-top: 8px;
 }
 }
 .movie-item:not(:last-child) {
     margin-bottom: 20px;
-
 @media screen and (min-width: $tablet) {
     margin-bottom: 32px;
 }
@@ -51,7 +64,6 @@ font-weight: 500;
 font-size: 12px;
 line-height: 1.33;
 text-transform: uppercase;
- 
 }
  
 .movie-item__description {
@@ -80,22 +92,3 @@ justify-content: center;
 align-items: center;
 }
  
-// .grid {
-//   list-style: none;
-//   padding: 0;
-//   display: flex;
-//   flex-wrap: wrap;
-//   justify-content: center;
-//   margin-left: -8px;
-//   margin-right: -8px;
-//   margin-bottom: -16px;
-//   margin-top: 0;
-// }
- 
-// .grid__item {
-//   flex-basis: calc(100% / 3 - 16px);
-//   min-width: 240px;
-//   margin-right: 8px;
-//   margin-left: 8px;
-//   margin-bottom: 16px;
-// }
