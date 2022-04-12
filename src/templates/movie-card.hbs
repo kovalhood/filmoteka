@@ -10,11 +10,14 @@
           loading='lazy'
         />
       </div>
-      <h3 class='movie-item__title'>{{title}}</h3>
-      <p>{{genre_ids}}</p>
-      |
-      {{release_date}}
-      <span class='movie-rating'>{{vote_average}}</span>
+      <div class='movie-item__text-container'>
+            <h3 class='movie-item__title'>{{title}}</h3>
+            <p class='movie-item__description'>{{genre_ids}}
+              <span class='movie-rating'>{{vote_average}}</span>
+            </p>
+      {{!-- |
+      {{release_date}} --}}
+      </div> 
     </a>
   </li>
 {{/each}}

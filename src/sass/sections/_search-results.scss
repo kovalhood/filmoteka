@@ -1,0 +1,90 @@
+
+.movies__list {
+    margin: 0 auto;
+@media screen and (min-width: $tablet) {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -16px;
+    flex-basis: calc((100% - 32px)/2);
+}
+@media screen and (min-width: $desktop) {
+    flex-basis: calc((100% - 32px)/3);
+}
+}
+.movie-item {
+    @media screen and (min-width: $tablet)  {
+       margin: 0 16px; 
+    }
+     @media screen and (min-width: $desktop)  {
+       margin: 0 8px; 
+    }
+}
+.movie-item:not(:last-child) {
+    margin-bottom: 20px;
+@media screen and (min-width: $tablet) {
+    margin-bottom: 32px;
+}
+}
+// home + my library
+// mobile version
+.movie-item__link {
+  cursor: pointer;
+}
+.movie-item__poster {
+   height: 402px;
+   width: 280px;
+ 
+   border: 1px solid #000000;
+   border: transparent;
+   border-radius: 5px;
+
+//    margin-left: auto;
+//    margin-right: auto;
+//    cursor: pointer;
+@media screen and (min-width: $tablet) {
+   height: 455px;
+   width: 336px;
+}
+@media screen and (min-width: $desktop) {
+   height: 449px;
+   width: 309px;
+}
+}
+ .movie-item__text-container {
+  margin-top: 10px;
+@media screen and (min-width: $tablet) {
+  margin-top: 8px;
+}
+}
+// for all versions the same
+.movie-item__title {
+font-weight: 500;
+font-size: 12px;
+line-height: 1.33;
+text-transform: uppercase;
+}
+.movie-item__description {
+font-weight: 500;
+font-size: 12px;
+line-height: 1.33;
+ 
+color: #ff6b08;
+display: flex;
+}
+.movie-rating {
+font-weight: 500;
+font-size: 12px;
+line-height: 1.17;
+text-transform: uppercase;
+margin-left: 9px;
+
+color: #FFFFFF;
+background: #FF6B01;
+border-radius: 5px;
+display: flex;
+width: 36px;
+height: 16px;
+justify-content: center;
+align-items: center;
+}
+ 
