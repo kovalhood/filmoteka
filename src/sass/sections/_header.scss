@@ -202,7 +202,7 @@ margin-top: 40px;
 }
 
 .search-form__input{
-  width: 330px;
+  width: 280px;
   font-size: 14px;
 
   border: none;
@@ -214,6 +214,10 @@ margin-top: 40px;
   &::placeholder{
     font-size: 14px;
     color: white;
+  }
+
+  @media screen and (min-width: $tablet) {
+    width: 330px;
   }
 }
 
