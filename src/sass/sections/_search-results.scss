@@ -1,8 +1,6 @@
-.movie-item.movie-item__link {
-    margin-left: auto;
-    margin-right: auto;
-}
+
 .movies__list {
+    margin: 0 auto;
 @media screen and (min-width: $tablet) {
     display: flex;
     flex-wrap: wrap;
@@ -39,7 +37,9 @@
    border: 1px solid #000000;
    border: transparent;
    border-radius: 5px;
- 
+
+//    margin-left: auto;
+//    margin-right: auto;
 //    cursor: pointer;
 @media screen and (min-width: $tablet) {
    height: 455px;
@@ -70,7 +70,6 @@ line-height: 1.33;
  
 color: #ff6b08;
 display: flex;
-margin-right: 9px;
 }
 .movie-rating {
 font-weight: 500;
