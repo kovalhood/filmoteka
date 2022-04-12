@@ -6,8 +6,6 @@
 @media screen and (min-width: $tablet) {
     display: flex;
     flex-wrap: wrap;
-    // margin-left: -16px;
-    // margin-right: -16px;
     margin: 0 -16px;
     flex-basis: calc((100% - 32px)/2);
 }
@@ -22,6 +20,12 @@
      @media screen and (min-width: $desktop)  {
        margin: 0 8px; 
     }
+}
+.movie-item:not(:last-child) {
+    margin-bottom: 20px;
+@media screen and (min-width: $tablet) {
+    margin-bottom: 32px;
+}
 }
 // home + my library
 // mobile version
@@ -52,12 +56,6 @@
   margin-top: 8px;
 }
 }
-.movie-item:not(:last-child) {
-    margin-bottom: 20px;
-@media screen and (min-width: $tablet) {
-    margin-bottom: 32px;
-}
-}
 // for all versions the same
 .movie-item__title {
 font-weight: 500;
@@ -65,7 +63,6 @@ font-size: 12px;
 line-height: 1.33;
 text-transform: uppercase;
 }
- 
 .movie-item__description {
 font-weight: 500;
 font-size: 12px;
