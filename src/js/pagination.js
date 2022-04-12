@@ -53,23 +53,26 @@
 const paginationElement = document.getElementById('pagination');
 const arrowLeft = document.querySelector('.arrow_left');
 const arrowRight = document.querySelector('.arrow_right');
-const listElement = document.querySelector('.js-movies__list');
+const searchFormRef = document.querySelector('.search-form');
+
 let currentPage = 1;
 let pageCount;
-const pagesOnWindow = 20;
-let rows = 7;
+const pagesOnWindow = 5;
+let rows = 20;
 
 function resetCurrentPage() {
 currentPage = 1;
  }
 
- function render(totalPages, listElement) {
+
+ 
+ function render(totalPages, searchFormRef, callback, searchQuery) {
   paginationElement.innerHTML = '';
   resetCurrentPage();
   arrowLeft.removeEventListener('click', onArrowLeftClick);
   arrowRight.removeEventListener('click', onArrowRightClick);
 
-   function setupPagination(items, wrapper) {
+   function setupPagination(movies, wrapper) {
      wrapper.innerHTML = '';
      pageCount = pagenumbers;
      let maxLeftPage = currentPage - Math.floor(pagesOnWindow / 2);
@@ -91,17 +94,17 @@ currentPage = 1;
 
      for (let i = 1; i <= totalPages; i++) {
        if (maxLeftPage !== 1 && i == 1) {
-         let btn = paginationButton(i, items);
+         let btn = paginationButton(i, movies);
          wrapper.appendChild(btn);
        }
 
        if (maxRightPage !== totalPages && i == totalPages) {
-         let btn = paginationButton(i, items);
+         let btn = paginationButton(i, movies);
          wrapper.appendChild(btn);
        }
 
        if (i >= maxLeftPage && i <= maxRightPage) {
-         let btn = paginationButton(i, items);
+         let btn = paginationButton(i, movies);
          wrapper.appendChild(btn);
        }
      }
@@ -117,13 +120,13 @@ currentPage = 1;
 
     button.addEventListener('click', function () {
       currentPage = page;
-      callback(listElement, currentPage);
+      callback(searchFormRef, currentPage);
 
       let current_btn = document.querySelector('.pagenumbers button.active');
       current_btn.classList.remove('active');
 
       button.classList.add('active');
-      setupPagination(listItems, paginationElement, rows);
+      setupPagination(movies, paginationElement, rows);
       hideExtremeButtons(totalPages);
     });
 
@@ -135,8 +138,8 @@ currentPage = 1;
   function onArrowLeftClick() {
     if (currentPage > 1) {
       currentPage--;
-      setupPagination(listItems, paginationElement, rows);
-      callback(listElement, currentPage);
+      setupPagination(movies, paginationElement, rows);
+      callback(searchFormRef, currentPage);
     }
 
     disableArrowBtn(totalPages);
@@ -146,14 +149,14 @@ currentPage = 1;
   function onArrowRightClick() {
     if (currentPage < totalPages) {
       currentPage++;
-      setupPagination(listElement, paginationElement, rows);
-      callback(listElement, currentPage);
+      setupPagination(searchFormRef, paginationElement, rows);
+      callback(searchFormRef, currentPage);
     }
     inactiveArrow(totalPages);
     hideExtremeButtons(totalPages);
   }
 
-  setupPagination(listItems, paginationElement, rows);
+  setupPagination(movies, paginationElement, rows);
   arrowLeft.onclick = onArrowLeftClick;
   arrowRight.onclick = onArrowRightClick;
 
@@ -177,3 +180,18 @@ function inactiveArrow(totalPages) {
 }
 
 
+// function fetchPopularFilmsByPage(page) {
+//   newApiService.pageNum = page;
+//   return newApiService.insertGenresToMovieObj();
+// }
+//  function fetchDataOfPopularFilms() {
+//   newApiService
+//     .fetchPopularArticlesPages()
+//     .then(results => {
+//       renderPagination(results.total_pages, results.results, displayList);
+//     })
+//     .catch(err => {
+//       console.log('error in function fetchDataOfPopularFilms');
+      
+//     });
+// }
