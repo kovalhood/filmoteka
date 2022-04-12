@@ -1,82 +1,112 @@
+//import { Pagination } from "tui-pagination";
+// const movies = ['.pagenumbers'];
+
+// const list_element = document.querySelectorAll('.movies');
+// const pagination_element = document.getElementById('pagination');
+// let current_page = 1;
+// let rows = 5;
+
+// function DisplayList(items, wrapper, rows_per_page, page) {
+//     wrapper.innerHTML = "";
+//     page--;
+//     let start = rows_per_page * page;
+//     let end = start + rows_per_page;
+//     let paginatedItems = items.slice(start, end);
+    
+//     for (let i = 0; i < paginatedItems.length; i++) {
+//         let item = paginatedItems[i];
+//         let item_element = document.createElement('div');
+//         item_element.classList.add('item');
+//         item_element.innerText = item;
+//         wrapper.appendChild(item_element);
+//     }
+// }
+
+// function SetupPagination(items, wrapper, rows_per_page) {
+//     wrapper.innerHTML = "";
+//     let page_count = Math.ceil(items.length / rows_per_page);
+//     for (let i = 1; i < page_count + 1; i++){
+//         let btn = PaginationButton(i, items);
+//         wrapper.appendChild(btn)
+//     }
+// }
+
+// function PaginationButton(page, items) {
+//     let button = document.createElement('button');
+//     button.innerText = page;
+//     if (current_page == page) 
+//         button.classList.add('active');
+//     button.addEventListener('click', function () {
+//         current_page = page;
+//         DisplayList(items, list_element, rows, current_page);
+//         let current_btn = document.querySelector('.pagenumbers button.active');
+//         current_btn.classList.remove('active');
+//         button.classList.add('active');
+//     });
+//     return button;
+//     }
+
+// DisplayList( movies, list_element, rows, current_page);
+// SetupPagination( movies, pagination_element, rows)
+
+
 const paginationElement = document.getElementById('pagination');
 const arrowLeft = document.querySelector('.arrow_left');
 const arrowRight = document.querySelector('.arrow_right');
+const listElement = document.querySelector('.js-movies__list');
 let currentPage = 1;
 let pageCount;
-const pagesOnWindow = 7;
-let rows = 20;
+const pagesOnWindow = 20;
+let rows = 7;
 
 function resetCurrentPage() {
-  currentPage = 1;
-}
+currentPage = 1;
+ }
 
-function render(totalPages, listItems) {
+ function render(totalPages, listElement) {
   paginationElement.innerHTML = '';
   resetCurrentPage();
   arrowLeft.removeEventListener('click', onArrowLeftClick);
   arrowRight.removeEventListener('click', onArrowRightClick);
 
-  function setupPagination(items, wrapper) {
-    wrapper.innerHTML = '';
+   function setupPagination(items, wrapper) {
+     wrapper.innerHTML = '';
+     pageCount = pagenumbers;
+     let maxLeftPage = currentPage - Math.floor(pagesOnWindow / 2);
+     let maxRightPage = currentPage + Math.floor(pagesOnWindow / 2);
 
-    pageCount = totalPages;
-    let maxLeftPage = currentPage - Math.floor(pagesOnWindow / 2);
-    let maxRightPage = currentPage + Math.floor(pagesOnWindow / 2);
+     if (maxLeftPage < 1) {
+       maxLeftPage = 1;
+       maxRightPage = pagesOnWindow;
+     }
 
-    if (maxLeftPage < 1) {
-      maxLeftPage = 1;
-      maxRightPage = pagesOnWindow;
-    }
+     if (maxRightPage > totalPages) {
+       maxLeftPage = totalPages - (pagesOnWindow - 1);
 
-    if (maxRightPage > totalPages) {
-      maxLeftPage = totalPages - (pagesOnWindow - 1);
+       if (maxLeftPage < 1) {
+         maxLeftPage = 1;
+       }
+       maxRightPage = totalPages;
+     }
 
-      if (maxLeftPage < 1) {
-        maxLeftPage = 1;
-      }
-      maxRightPage = totalPages;
-    }
+     for (let i = 1; i <= totalPages; i++) {
+       if (maxLeftPage !== 1 && i == 1) {
+         let btn = paginationButton(i, items);
+         wrapper.appendChild(btn);
+       }
 
-    for (let i = 1; i <= totalPages; i++) {
-      if (maxLeftPage !== 1 && i == 1) {
-        let btn = paginationButton(i, items);
-        wrapper.appendChild(btn);
-      }
+       if (maxRightPage !== totalPages && i == totalPages) {
+         let btn = paginationButton(i, items);
+         wrapper.appendChild(btn);
+       }
 
-      if (maxRightPage !== totalPages && i == totalPages) {
-        let btn = paginationButton(i, items);
-        wrapper.appendChild(btn);
-      }
+       if (i >= maxLeftPage && i <= maxRightPage) {
+         let btn = paginationButton(i, items);
+         wrapper.appendChild(btn);
+       }
+     }
+   }
 
-      if (i >= maxLeftPage && i <= maxRightPage) {
-        let btn = paginationButton(i, items);
-        wrapper.appendChild(btn);
-      }
-
-  //add threeDots
-      if (
-        totalPages >= 6 &&
-        i == 1 &&
-        currentPage !== 1 &&
-        currentPage !== 2 &&
-        currentPage !== 3
-      ) {
-        const dotsEl = addDotsBlock();
-        wrapper.insertBefore(dotsEl, wrapper[wrapper.length - 2]);
-      }
-
-      if (
-        pageCount >= 7 &&
-        i == pageCount - 1 &&
-        currentPage !== pageCount &&
-        currentPage !== pageCount - 2 &&
-        currentPage !== pageCount - 1
-      ) {
-        const dotsEl = addDotsBlock();
-        wrapper.insertBefore(dotsEl, wrapper[1]);
-      }
-    }
-  }
 
 
   function paginationButton(page) {
@@ -116,7 +146,7 @@ function render(totalPages, listItems) {
   function onArrowRightClick() {
     if (currentPage < totalPages) {
       currentPage++;
-      setupPagination(listItems, paginationElement, rows);
+      setupPagination(listElement, paginationElement, rows);
       callback(listElement, currentPage);
     }
     inactiveArrow(totalPages);
@@ -145,3 +175,5 @@ function inactiveArrow(totalPages) {
     arrowRight.classList.remove('disabled-arrow');
   }
 }
+
+

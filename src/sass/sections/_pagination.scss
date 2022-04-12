@@ -116,11 +116,20 @@
     }
 }
 
-.hide {
-    display: none;
-}
+
 
 .disabled-arrow {
     pointer-events: none;
     background-color: ($grey-color);
+}
+
+@media screen and (max-width: 768px) {
+    .hide {
+        display: none;
+    }
+}
+@media screen and (min-width: 768px) {
+    .hide {
+        display: inline-block;
+    }
 }
