@@ -1,5 +1,35 @@
-//import { Pagination } from "tui-pagination";
-// const movies = ['.pagenumbers'];
+// const Pagination = require('tui-pagination');
+
+// const containerPag = document.querySelector('pagination');
+// const options = { // below default value of options
+//      totalItems: 10,
+//      itemsPerPage: 10,
+//      visiblePages: 10,
+//      page: 1,
+//      centerAlign: false,
+//      firstItemClassName: 'tui-first-child',
+//      lastItemClassName: 'tui-last-child',
+//      template: {
+//          page: '<a href="#" class="tui-page-btn">{{page}}</a>',
+//          currentPage: '<strong class="tui-page-btn tui-is-selected">{{page}}</strong>',
+//          moveButton:
+//              '<a href="#" class="tui-page-btn tui-{{type}}">' +
+//                  '<span class="tui-ico-{{type}}">{{type}}</span>' +
+//              '</a>',
+//          disabledMoveButton:
+//              '<span class="tui-page-btn tui-is-disabled tui-{{type}}">' +
+//                  '<span class="tui-ico-{{type}}">{{type}}</span>' +
+//              '</span>',
+//          moreButton:
+//              '<a href="#" class="tui-page-btn tui-{{type}}-is-ellip">' +
+//                  '<span class="tui-ico-ellip">...</span>' +
+//              '</a>'
+//      }
+// };
+// const pagination = new Pagination(String, Object);
+
+
+// const movies = [''];
 
 // const list_element = document.querySelectorAll('.movies');
 // const pagination_element = document.getElementById('pagination');
@@ -34,7 +64,7 @@
 // function PaginationButton(page, items) {
 //     let button = document.createElement('button');
 //     button.innerText = page;
-//     if (current_page == page) 
+//     if (current_page == page)
 //         button.classList.add('active');
 //     button.addEventListener('click', function () {
 //         current_page = page;
@@ -195,3 +225,5 @@ function inactiveArrow(totalPages) {
       
 //     });
 // }
+
+
