@@ -1,9 +1,7 @@
 import moviesTmpl from '../templates/movie-card.hbs';
 import movieCardDescTmpl from '../templates/movie-description.hbs';
-// console.log(moviesTmpl);
 import { fetchTrendyMovies } from './fetch-trendy-movies';
 import MoviesApiService from './fetch-search';
-// console.log(MoviesApiService);
 
 const movieApiService = new MoviesApiService();
 const BASE_URL = 'https://api.themoviedb.org/3';
@@ -19,24 +17,9 @@ const categories = {
   genre: '',
 };
 
-//Query movie
-movieApiService.fetchMovies().then(res => {
-  console.log(res);
-  // console.log(page);
-});
+searchFormRef.addEventListener('submit', onSearchFormSubmit);
 
-function onSearchFormSubmit(e) {
-  e.preventDefault();
-  console.log(e);
-  k;
-  movieApiService.query = e.currentTarget.elements.searchQuery.value.trim();
-  console.log(e.currentTarget.elements.searchQuery.value);
-
-  // movieApiService.fetchMovie().then(data => {
-  //   console.log(data);
-  // });
-}
-// Розмітка при загрузці сторінки
+// 1.Розмітка при загрузці сторінки (Trending Movies)
 window.addEventListener('load', async function (event) {
   fetchTrendyMovies()
     .then(movies => {
@@ -45,12 +28,38 @@ window.addEventListener('load', async function (event) {
     })
     .catch(error => console.log(error));
 });
-// Rendering Trendy movies
+
+// 2. SearchForm Query searching
+function onSearchFormSubmit(e) {
+  e.preventDefault();
+
+  const query = e.currentTarget.elements.searchQuery.value;
+  const normalizedQuery = query.toLowerCase().trim().split(' ').join('+');
+  movieApiService.query = normalizedQuery;
+  console.log(typeof movieApiService.query);
+  clearCardContainer();
+  movieApiService.resetPage();
+
+  onLoadMovies();
+  searchFormRef.reset();
+}
+
+function onLoadMovies() {
+  movieApiService
+    .fetchMovies()
+    .then(({ results }) => {
+      // console.log(results[0].release_date.slice(0, 4));
+      renderMarkup(results);
+    })
+    .catch(error => console.log(error));
+}
+
+// Trendy movies and SearchForm Query Markup rendering
 function renderMarkup(movies) {
   moviesListRef.insertAdjacentHTML('beforeend', moviesTmpl(movies));
 }
 
-// // fetchTrendyMovies().then(res => {
-//   console.log(res[0].release_date);
-//   console.log(res[0].release_date.slice(0, 4));
-// });
+// Clear movie cards container
+function clearCardContainer() {
+  moviesListRef.innerHTML = '';
+}
