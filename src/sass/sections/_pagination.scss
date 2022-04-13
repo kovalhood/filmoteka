@@ -1,135 +1,56 @@
-.pagination_container {
+#pagination {
     display: flex;
-    flex-direction: column;
     align-items: center;
-    margin-bottom: 60px;}
-
- .pagination_pagesContainer {
-    display: flex;
-    flex-wrap: wrap;
     justify-content: center;
-    align-items: center;
+    margin-bottom: 60px;
 }
 
-
- .pagenumbers {
-    flex-wrap: wrap;
-    justify-content: center;
-
-    button {
-       width: 40px;
-       height: 40px;
-       margin: 5px;
-       border: none;
-       outline: none;
-       font-size: 12px;
-       line-height: 1.33;
-       background-color: ($white-color);
-       color: ($text-black);
-       transition: 0.35s;
-       cursor: pointer;
-    }
-
-    button:hover {
-        background-color: ($accent-color-secondary);
-        color: ($white-color);
-        border-radius: 5px;
-    }
-
-    button.active {
-        background-color: ($accent-color-secondary);
-        color: ($white-color);
-        border-radius: 5px;
-    }
-}
-
-
-@media screen and (max-width: 400px) {
-    .pagenumbers button {
-        width: 38px;
-        height: 38px;
-        margin: 3px;
-    }
-}
-
-@media screen and (max-width: 320px) {
-    .pagenumbers button {
-        width: 35px;
-        height: 35px;
-        margin: 1px;
-    }
-}
-
-.page-arrow {
-    width: 40px;
-    height: 40px;
-    margin: 5px;
-    background-position: center;
-    border: none;
-    background-color:($white-color);
-    transition: background-color 0.35s ease-in;
-    border-radius: 5px;
-
-    &:hover {
-        background-color: ($accent-color-secondary);
-        color: ($white-color);
-        border-radius: 5px;
-    }
-
-    &:active {
-        background-color: ($alert-color);
-    }
-}
-.arrow_left {
-    background-image: url('../../../filmoteka/src/images/arrow-left.svg');
-    background-repeat: no-repeat;
-}
-
-.arrow_right {
-    background-image: url('../../../filmoteka/src/images/arrow-right.svg');
-    background-repeat: no-repeat;
-}
-
-
-.dots {
-    display: flex;
-    width: 40px;
-    height: 40px;
-    margin: 5px;
-
-    border: none;
-    background-color: ($white-color);
+#pagination a,
+#pagination i {
     display: inline-block;
     text-align: center;
-    padding: 10px 5px 1px 5px;
+    width: 40px;
+    height: 40px;
+    margin: 5px;
+    border: none;
+    outline: none;
+    font-size: 12px;
+    line-height: 1.33;
+    background-color: ($white-color);
+    color: ($text-black);
+    transition: 0.35s;
+    cursor: pointer;
 }
 
-@media screen and (max-width: 767px) {
-    .dots {
+#pagination a {
+    margin: 0 2px 0 2px;
+    border-radius: 4px;
+    cursor: pointer;
+    padding-top: 13px;
+}
+
+#pagination i {
+    margin: 0 3px 0 3px;
+    padding-top: 13px;
+
+    @media screen and (max-width: 767px) {
         display: none;
     }
-}
 
-@media screen and (min-width: 768px) {
-    .dots {
+    @media screen and (min-width: 768px) {
         display: inline-block;
     }
 }
 
+#pagination a.current {
 
+    background-color: ($accent-color-secondary);
+    color: ($white-color);
 
-.disabled-arrow {
-    pointer-events: none;
-    background-color: ($grey-color);
 }
 
-@media screen and (max-width: 768px) {
-    .hide {
-        display: none;
-    }
-}
-@media screen and (min-width: 768px) {
-    .hide {
-        display: inline-block;
-    }
+#pagination a.arrows {
+    font-size: 20px;
+    padding-top: 5px;
+    background: ($grey-color);
 }
