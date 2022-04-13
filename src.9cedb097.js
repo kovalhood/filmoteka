@@ -27,4 +27,4 @@ const e=document.querySelector("[data-modal-open]"),d=document.querySelector("[d
 },{}],"Focm":[function(require,module,exports) {
 "use strict";require("./sass/main.scss"),require("../src/js/header.js"),require("../src/js/fetch-search.js"),require("../src/js/search-results.js"),require("../src/js/pagination.js"),require("../src/js/footer.js"),require("../src/js/modal.js"),require("../src/js/modal-footer.js");
 },{"./sass/main.scss":"clu1","../src/js/header.js":"cGsR","../src/js/fetch-search.js":"FDid","../src/js/search-results.js":"UnfC","../src/js/pagination.js":"o8lo","../src/js/footer.js":"b5Ik","../src/js/modal.js":"RSqK","../src/js/modal-footer.js":"hhFr"}]},{},["Focm"], null)
-//# sourceMappingURL=/filmoteka/src.460b88f5.js.map
+//# sourceMappingURL=/filmoteka/src.9cedb097.js.map
