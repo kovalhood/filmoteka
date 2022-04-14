@@ -1,27 +1,33 @@
-const modalOpen = document.querySelector('[data-modal-open]');
+const modalOpenBtn = document.querySelector('[data-modal-open]');
 const closeBtn = document.querySelector('[data-modal-close]');
 const modal = document.querySelector('[data-modal]');
 
-modalOpen.onclick = function() {
+modalOpenBtn.addEventListener('click', modalOpen);
+closeBtn.addEventListener('click', modalClose);
+
+function modalOpen() {
     modal.classList.remove('is-hidden');
-}
 
-closeBtn.onclick = function() {
-    modal.classList.add('is-hidden');
-}
+    window.addEventListener('click', onBackdropClick);
+    window.addEventListener('keydown', onEscKeyPress);
 
-window.onclick = function(event) {
-    if (event.target == modal) {
-        modal.classList.add('is-hidden');
-    }
-}
-
-document.onkeydown = function (event) {
-  switch (event.keyCode) {
-    case 27:
-        modal.classList.add('is-hidden');
-        break;
-    default:
-        return; // Do nothing for the rest
-  }
+    function onBackdropClick(event) {
+        if (event.target == modal) {
+            modal.classList.add('is-hidden');
+            window.removeEventListener('click', onBackdropClick);
+        };
+    };
+    
+    function onEscKeyPress(event) {
+        const ESC_KEY_CODE = 'Escape';
+        if (event.code === ESC_KEY_CODE) {
+            modal.classList.add('is-hidden');
+            window.removeEventListener('keydown', onEscKeyPress);
+        };
+    };
 };
+
+function modalClose() {
+    modal.classList.add('is-hidden');
+};
+
