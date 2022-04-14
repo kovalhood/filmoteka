@@ -1,6 +1,7 @@
 import moviesTmpl from '../templates/movie-card.hbs';
 import movieCardDescTmpl from '../templates/movie-description.hbs';
-import { fetchTrendyMovies } from './fetch-trendy-movies';
+import { fetchTrendyMovies, fetchGenres } from './fetch-trendy-movies';
+import { genresNames } from './genres-names';
 import MoviesApiService from './fetch-search';
 
 const movieApiService = new MoviesApiService();
@@ -22,9 +23,8 @@ searchFormRef.addEventListener('submit', onSearchFormSubmit);
 // 1.Розмітка при загрузці сторінки (Trending Movies)
 window.addEventListener('load', async function (event) {
   fetchTrendyMovies()
-    .then(movies => {
-      // release_date.slice(0, 1);
-      renderMarkup(movies);
+    .then(results => {
+      renderMarkup(normalizedData(results));
     })
     .catch(error => console.log(error));
 });
@@ -36,27 +36,62 @@ function onSearchFormSubmit(e) {
   const query = e.currentTarget.elements.searchQuery.value;
   const normalizedQuery = query.toLowerCase().trim().split(' ').join('+');
   movieApiService.query = normalizedQuery;
-  console.log(typeof movieApiService.query);
+
   clearCardContainer();
   movieApiService.resetPage();
 
   onLoadMovies();
-  searchFormRef.reset();
+  // searchFormRef.reset();
 }
-
+// Render Markup for Trendy Movies and Query search movies
 function onLoadMovies() {
   movieApiService
     .fetchMovies()
     .then(({ results }) => {
-      // console.log(results[0].release_date.slice(0, 4));
-      renderMarkup(results);
+      renderMarkup(normalizedData(results));
     })
     .catch(error => console.log(error));
 }
 
-// Trendy movies and SearchForm Query Markup rendering
 function renderMarkup(movies) {
   moviesListRef.insertAdjacentHTML('beforeend', moviesTmpl(movies));
+}
+
+// Get Year
+function getYear(obj) {
+  const date = new Date(obj.release_date);
+  let year = obj.release_date ? date.getFullYear() : '';
+  return year;
+}
+
+// Normalize the data for Trendy Movies and Query Search
+function normalizedData(results) {
+  return results.map(movie => {
+    const genres = createGenres(genresNames, movie.genre_ids);
+    let listOfGenres = genres[0];
+
+    if (listOfGenres.length > 3) {
+      listOfGenres.splice(2, 5, 'Other');
+    }
+    let objData = {
+      ...movie,
+      year: getYear(movie),
+      genres: listOfGenres,
+    };
+    return objData;
+  });
+}
+
+// //create the Array/List of Genres (names)
+function createGenres(arrayID, genresID) {
+  // let array = idArray.map(id => genres.filter(el => el.id === id));
+  let arrayOfGenres = [];
+  return arrayID.map(element => {
+    if (genresID.includes(element.id)) {
+      arrayOfGenres.push(element.name);
+    }
+    return arrayOfGenres;
+  });
 }
 
 // Clear movie cards container
