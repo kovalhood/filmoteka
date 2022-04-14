@@ -12,6 +12,8 @@ const imgPath = 'https://image.tmdb.org/t/p/w500';
 const searchFormRef = document.querySelector('.search-form');
 const moviesListRef = document.querySelector('.js-movies__list');
 
+const movieCardRef = document.querySelector([''])
+
 const categories = {
   trending: '/trending/movie/week',
   querySearch: '/search/movie',
