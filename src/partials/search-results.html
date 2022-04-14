@@ -1,13 +1,24 @@
 <section class="movies section">
   <div class="container movies__container">
     <!-- <h2 class="movies__title visually-hidden">Trending Movies</h2> -->
-    <ul class="movies__list js-movies__list list">
+    <ul class="movies__list js-movies__list list" data-modal-open-btn>
     </ul>
   </div>
 </section>
 
-<!-- <div class='movie-card-modal js-movie-card-modal is-hidden'>
-  <div class='movie-card-modal__overlay'></div>
-  <div class='container movie-card-modal__content js-movie-card-modal__content'></div>
 
-</div>  -->
+<div class='movie-card__backdrop js-movie-card-modal' data-modal-card>
+  <div class='movie-card__modal'>
+  <!-- <div class='container movie-card-modal__content js-movie-card-modal__content'> -->
+    <button class="movie__modal--close" data-modal-close-btn>
+    <svg class="movie__modal--close__icon" width="22" height="22">
+      <use href="./images/icons.svg#close"></use>
+    </svg>
+  </button>
+  <div id="add-to-list">
+    <button type="button" class="watched-button" data-watched>add to watched</button>
+    <button type="button" class="queue-button" data-queue><span>add to queue</span></button>
+  </div>
+  <!-- </div> -->
+  </div>
+</div> 

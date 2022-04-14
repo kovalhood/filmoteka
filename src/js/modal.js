@@ -17,24 +17,28 @@ function addToQueueList() {
     console.log('added to queue list');
     localStorage.removeItem(STORAGE_WATCHED);  
 }
+// modal container 
+const movieOpenBtn = document.querySelector('[data-modal-open-btn]');
+const movieCloseBtn = document.querySelector('[data-modal-close-btn]');
+const movieBackdrop = document.querySelector('[data-modal-card]');
 
-// movie-item__modal container
-const modalOpenBtn = document.querySelector('[data-modal-open]');
-const closeBtn = document.querySelector('[data-modal-close]');
-const modal = document.querySelector('[data-modal]');
 
-modalOpenBtn.addEventListener('click', modalOpen);
-closeBtn.addEventListener('click', modalClose);
+movieCloseBtn.addEventListener('click', onModalClose);
+movieOpenBtn.addEventListener('click', onModalOpen);
 
-function modalOpen() {
-    modal.classList.remove('is-hidden');
+
+function onModalClose() {
+   movieBackdrop.classList.add('is-hidden');
+};
+function onModalOpen() {
+   movieBackdrop.classList.remove('is-hidden');
 
     window.addEventListener('click', onBackdropClick);
     window.addEventListener('keydown', onEscKeyPress);
 
     function onBackdropClick(event) {
-        if (event.target == modal) {
-            modal.classList.add('is-hidden');
+        if (event.target == movieBackdrop) {
+            movieBackdrop.classList.add('is-hidden');
             window.removeEventListener('click', onBackdropClick);
         };
     };
@@ -42,12 +46,8 @@ function modalOpen() {
     function onEscKeyPress(event) {
         const ESC_KEY_CODE = 'Escape';
         if (event.code === ESC_KEY_CODE) {
-            modal.classList.add('is-hidden');
+            movieBackdrop.classList.add('is-hidden');
             window.removeEventListener('keydown', onEscKeyPress);
         };
     };
-};
-
-function modalClose() {
-    modal.classList.add('is-hidden');
 };

@@ -37,7 +37,7 @@
     color: $text-black;
 }
 
-.movie-item__backdrop  {
+.movie-card__backdrop {
     position: fixed;
     top: 0;
     left: 0;
@@ -59,7 +59,7 @@
 }
 
 /* Modal Content */
-.movie__modal {
+.movie-card__modal {
     padding: 40px 0;
     height: 100vh;
     
