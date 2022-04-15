@@ -17,11 +17,10 @@ function addToQueueList() {
     console.log('added to queue list');
     localStorage.removeItem(STORAGE_WATCHED);  
 }
-// movie modal container 
+// movie-card modal container 
 const movieOpenBtn = document.querySelector('[data-modal-open-btn]');
 const movieCloseBtn = document.querySelector('[data-modal-close-btn]');
 const movieBackdrop = document.querySelector('[data-modal-card]');
-
 
 movieCloseBtn.addEventListener('click', onModalClose);
 movieOpenBtn.addEventListener('click', onModalOpen);
@@ -47,7 +46,6 @@ function onModalOpen() {
         };
     };
 };
-
 function onModalClose() {
    movieBackdrop.classList.add('is-hidden');
 };
