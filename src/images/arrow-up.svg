@@ -1,0 +1,17 @@
+
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 175.6 171.4" style="enable-background:new 0 0 175.6 171.4;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#1D1D1B;}
+	.st1{fill:#FF9900;}
+	.st2{opacity:0.4;fill:#FF9900;enable-background:new    ;}
+</style>
+<title>orange-arrow-up-icon</title>
+<path class="st0" d="M84.8,169.6C38,169.6,0,131.6,0,84.8S38,0,84.8,0s84.8,38,84.8,84.8S131.6,169.6,84.8,169.6z M84.8,6
+	C41.3,6,6,41.3,6,84.8s35.3,78.8,78.8,78.8s78.8-35.3,78.8-78.8S128.2,6,84.8,6z"/>
+<path class="st1" d="M93.8,7.8C48.6,7.8,12,44.4,12,89.6s36.6,81.8,81.8,81.8s81.8-36.6,81.8-81.8S139,7.8,93.8,7.8z M114.7,96.9
+	v34.5l-45,0.5l0.5-35l-18.5-0.5l40.5-43.5l38.5,44H114.7z"/>
+<polygon class="st2" points="114.7,96.9 114.7,131.4 69.7,131.9 70.2,96.9 51.7,96.4 92.2,52.9 130.7,96.9 "/>
+<path class="st0" d="M59.7,127.9l0.5-35.1L38,92.2l47.3-50.8l45,51.5h-19.6v34.5L59.7,127.9z M51.4,86.6L66.2,87l-0.5,34.9l39-0.4
+	V86.9h12.4l-32-36.5L51.4,86.6z"/>
+</svg>
