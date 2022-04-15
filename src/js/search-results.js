@@ -15,7 +15,6 @@ const moviesListRef = document.querySelector('.js-movies__list');
 const movieOpenBtn = document.querySelector('[data-modal-open-btn]');
 const movieBackdrop = document.querySelector('[data-modal-card]');
 
-
 const categories = {
   trending: '/trending/movie/week',
   querySearch: '/search/movie',
