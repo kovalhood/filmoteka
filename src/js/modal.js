@@ -17,7 +17,7 @@ function addToQueueList() {
     console.log('added to queue list');
     localStorage.removeItem(STORAGE_WATCHED);  
 }
-// modal container 
+// movie modal container 
 const movieOpenBtn = document.querySelector('[data-modal-open-btn]');
 const movieCloseBtn = document.querySelector('[data-modal-close-btn]');
 const movieBackdrop = document.querySelector('[data-modal-card]');
@@ -26,12 +26,8 @@ const movieBackdrop = document.querySelector('[data-modal-card]');
 movieCloseBtn.addEventListener('click', onModalClose);
 movieOpenBtn.addEventListener('click', onModalOpen);
 
-
-function onModalClose() {
-   movieBackdrop.classList.add('is-hidden');
-};
 function onModalOpen() {
-   movieBackdrop.classList.remove('is-hidden');
+    movieBackdrop.classList.remove('is-hidden');
 
     window.addEventListener('click', onBackdropClick);
     window.addEventListener('keydown', onEscKeyPress);
@@ -51,3 +47,8 @@ function onModalOpen() {
         };
     };
 };
+
+function onModalClose() {
+   movieBackdrop.classList.add('is-hidden');
+};
+

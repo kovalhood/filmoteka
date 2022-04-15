@@ -11,6 +11,8 @@ const imgPath = 'https://image.tmdb.org/t/p/w500';
 
 const searchFormRef = document.querySelector('.search-form');
 const moviesListRef = document.querySelector('.js-movies__list');
+const movieBackdrop = document.querySelector('[data-modal-card]');
+
 
 const categories = {
   trending: '/trending/movie/week',
@@ -19,6 +21,7 @@ const categories = {
 };
 
 searchFormRef.addEventListener('submit', onSearchFormSubmit);
+movieBackdrop.addEventListener('open', onLoadMovieCard);
 
 // 1.Розмітка при загрузці сторінки (Trending Movies)
 window.addEventListener('load', async function (event) {
@@ -98,3 +101,29 @@ function createGenres(arrayID, genresID) {
 function clearCardContainer() {
   moviesListRef.innerHTML = '';
 }
+
+// movie modal container
+
+movieBackdrop.addEventListener('open', async function (event) {
+  
+  fetchTrendyMovies()
+    .then(results => {
+      renderMarkupMovieCard(results);
+    })
+    .catch(error => console.log(error));
+ 
+});
+
+function renderMarkupMovieCard(movie) {
+  movieBackdrop.insertAdjacentHTML('beforeend', movieCardDescTmpl(movie));
+}
+
+function onLoadMovieCard() {
+  movieApiService
+    .fetchMovies()
+    .then(({ results }) => {
+      renderMarkupMovieCard(results);
+    })
+    .catch(error => console.log(error));
+}
+
