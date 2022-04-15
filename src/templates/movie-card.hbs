@@ -11,13 +11,16 @@
         />
       </div>
       <div class='movie-item__text-container'>
-            <h3 class='movie-item__title'>{{title}}</h3>
-            <p class='movie-item__description'>{{genre_ids}}
-              <span class='movie-rating'>{{vote_average}}</span>
-            </p>
-      {{!-- |
-      {{release_date}} --}}
-      </div> 
+        <h3 class='movie-item__title'>{{title}}</h3>
+        <p class='movie-item__description'>
+          {{#each genres}}
+            {{this}}{{#unless @last}},{{/unless}}
+          {{/each}}
+          |
+          {{year}}
+          <span class='movie-rating'>{{vote_average}}</span>
+        </p>
+      </div>
     </a>
   </li>
 {{/each}}

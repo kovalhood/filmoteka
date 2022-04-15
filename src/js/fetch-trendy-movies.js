@@ -3,12 +3,19 @@ const API_KEY = '387a2500e741e87c896db50117c25d75';
 const categories = {
   trending: '/trending/movie/week',
   querySearch: '/search/movie',
-  genre: '',
+  genre: '/genre/movie/list',
 };
 //Fetch Trendy Movies
 export async function fetchTrendyMovies() {
   const response = await fetch(`${BASE_URL}${categories.trending}?api_key=${API_KEY}`);
   const { results } = await response.json();
-  console.log(results);
+
   return results;
+}
+
+// Fetch Genres
+export async function fetchGenres() {
+  const response = await fetch(`${BASE_URL}${categories.genre}?api_key=${API_KEY}&language=en-US`);
+  const genres = await response.json();
+  return genres;
 }

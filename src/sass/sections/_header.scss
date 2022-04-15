@@ -232,6 +232,23 @@ margin-top: 40px;
   cursor: pointer;
 }
 
+.search__error{
+  margin-top: 20px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 16px;
+  color: $alert-color;
+  text-align: left;
+
+  @media screen and (min-width: $tablet) {
+    text-align: center;
+  }
+}
+
+.hidden {
+  display: none;
+}
+
 // library buttons
 .library-buttons {
   display: flex;
