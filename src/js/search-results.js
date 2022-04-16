@@ -3,6 +3,7 @@ import movieCardDescTmpl from '../templates/movie-description.hbs';
 import { fetchTrendyMovies, fetchGenres } from './fetch-trendy-movies';
 import { genresNames } from './genres-names';
 import MoviesApiService from './fetch-search';
+// import brokenImgUrl from '../images/movies/broken-img.png';
 
 const movieApiService = new MoviesApiService();
 const BASE_URL = 'https://api.themoviedb.org/3';
@@ -19,6 +20,7 @@ const categories = {
   trending: '/trending/movie/week',
   querySearch: '/search/movie',
   genre: '',
+  basic: '&language=en-US&page=1&include_adult=false',
 };
 
 searchFormRef.addEventListener('submit', onSearchFormSubmit);
@@ -78,6 +80,10 @@ function normalizedData(results) {
     if (listOfGenres.length > 3) {
       listOfGenres.splice(2, 5, 'Other');
     }
+    // originalImgPath = createImg(movie);
+    // console.log(originalImgPath);
+    // console.log(movie.poster_path);
+
     let objData = {
       ...movie,
       year: getYear(movie),
@@ -89,7 +95,6 @@ function normalizedData(results) {
 
 // //create the Array/List of Genres (names)
 function createGenres(arrayID, genresID) {
-  // let array = idArray.map(id => genres.filter(el => el.id === id));
   let arrayOfGenres = [];
   return arrayID.map(element => {
     if (genresID.includes(element.id)) {
@@ -102,7 +107,6 @@ function createGenres(arrayID, genresID) {
 function clearCardContainer() {
   moviesListRef.innerHTML = '';
 }
-
 
 // movie-card modal container
 
@@ -127,3 +131,14 @@ movieBackdrop.addEventListener('open', async function (event) {
 function renderMarkupMovieCard(movie) {
   movieBackdrop.insertAdjacentHTML('beforeend', movieCardDescTmpl(movie));
 }
+
+// Images
+// function imgError(image) {
+//   image.onerror = '';
+//   image.src = './images/movies/broken-img.png';
+//   return true;
+// }
+
+// function createImg(movie) {
+//   return movie.poster_path ? `${imgPath}${movie.poster_path}` : brokenImgUrl;
+// }

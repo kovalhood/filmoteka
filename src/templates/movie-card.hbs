@@ -4,8 +4,10 @@
     <a href='#' class='movie-item__link link'>
       <div class='movie-item__img-container'>
         <img
-          class='movie-item__poster'
+          class='movie-item__poster js-img'
           src='https://image.tmdb.org/t/p/w500{{poster_path}}'
+          {{! onerror="this.onerror=null; this.src = 'https://image.tmdb.org/t/p/w500/aTezEYoe3hKPGva8yY4M7b24F3D.jpg'" }}
+          {{! onerror="this.onerror=null; this.src = './images/movies/broken-img.png'" }}
           alt='movie poster {{title}}'
           loading='lazy' 
         />
