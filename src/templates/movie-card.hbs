@@ -1,6 +1,6 @@
 {{! Созданным элементам сразу нужно давать понятные классы для дальнейшей удобной стилизации }}
 {{#each this}}
-  <li class='movie-item' data-id=''>
+  <li class='movie-item' data-id='' >
     <a href='#' class='movie-item__link link'>
       <div class='movie-item__img-container'>
         <img
@@ -9,7 +9,7 @@
           {{! onerror="this.onerror=null; this.src = 'https://image.tmdb.org/t/p/w500/aTezEYoe3hKPGva8yY4M7b24F3D.jpg'" }}
           {{! onerror="this.onerror=null; this.src = './images/movies/broken-img.png'" }}
           alt='movie poster {{title}}'
-          loading='lazy'
+          loading='lazy' 
         />
       </div>
       <div class='movie-item__text-container'>

@@ -13,6 +13,9 @@ const imgPath = 'https://image.tmdb.org/t/p/w500';
 const searchFormRef = document.querySelector('.search-form');
 const moviesListRef = document.querySelector('.js-movies__list');
 
+const movieOpenBtn = document.querySelector('[data-modal-open-btn]');
+const movieBackdrop = document.querySelector('[data-modal-card]');
+
 const categories = {
   trending: '/trending/movie/week',
   querySearch: '/search/movie',
@@ -21,6 +24,8 @@ const categories = {
 };
 
 searchFormRef.addEventListener('submit', onSearchFormSubmit);
+movieOpenBtn.addEventListener('click', onLoadMovieCard);
+
 
 // 1.Розмітка при загрузці сторінки (Trending Movies)
 window.addEventListener('load', async function (event) {
@@ -98,11 +103,35 @@ function createGenres(arrayID, genresID) {
     return arrayOfGenres;
   });
 }
-
 // Clear movie cards container
 function clearCardContainer() {
   moviesListRef.innerHTML = '';
 }
+
+// movie-card modal container
+
+function onLoadMovieCard() {
+  movieApiService
+    .fetchMovies()
+    .then(({ results }) => {
+      renderMarkupMovieCard(results);
+    })
+    .catch(error => console.log(error));
+}
+
+movieBackdrop.addEventListener('open', async function (event) {
+  fetchTrendyMovies()
+    .then(results => {
+      renderMarkupMovieCard(results);
+    })
+    .catch(error => console.log(error));
+  onLoadMovieCard();
+});
+
+function renderMarkupMovieCard(movie) {
+  movieBackdrop.insertAdjacentHTML('beforeend', movieCardDescTmpl(movie));
+}
+
 // Images
 // function imgError(image) {
 //   image.onerror = '';
