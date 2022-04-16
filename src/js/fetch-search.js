@@ -16,18 +16,18 @@ export default class MoviesApiService {
     this.page = 1;
   }
 
-  async fetchMovies() {
-    const url = `${BASE_URL}?api_key=${API_KEY}&language=en-US&page=${this.page}&query=${this.searchQuery}`;
+  async fetchMovies(currentPage) {
+    const url = `${BASE_URL}?api_key=${API_KEY}&language=en-US&page=${currentPage}&query=${this.searchQuery}&include_adult=false`;
 
     const response = await fetch(url, options);
     const movies = await response.json();
-    this.incrementPage();
+    // this.incrementPage();
     return movies;
   }
 
-  incrementPage() {
-    this.page += 1;
-  }
+  // incrementPage() {
+  //   this.page += 1;
+  // }
 
   resetPage() {
     this.page = 1;
