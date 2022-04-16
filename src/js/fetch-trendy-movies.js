@@ -11,7 +11,7 @@ export async function fetchTrendyMovies() {
   const response = await fetch(
     `${BASE_URL}${categories.trending}?api_key=${API_KEY}${categories.basic}`,
   );
-  const { results } = await response.json();
+  const results = await response.json();
 
   return results;
 }
