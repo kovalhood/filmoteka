@@ -26,8 +26,6 @@
   }
 
   @media screen and (min-width: $desktop) {
-    padding-top: 200px;
-    padding-bottom: 200px;
     background-image: linear-gradient(to right, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
       url(../images/header/header-d.jpg);
 
@@ -67,8 +65,6 @@
   }
 
   @media screen and (min-width: $desktop) {
-    padding-top: 200px;
-    padding-bottom: 200px;
     background-image: linear-gradient(to right, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
       url(../images/header/library-d.jpg);
 
@@ -80,13 +76,14 @@
     }
   }
 }
-
+.header-height{
+  height: 220px;
+}
 // page header
 .page-header {
+  height: 220px;
   padding-top: 40px;
   padding-bottom: 40px;
-
-  height: 220px;
 
   background-color: black;
   text-align: center;
