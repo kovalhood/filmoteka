@@ -7,9 +7,9 @@ const categories = {
   basic: '&language=en-US&page=1&include_adult=false',
 };
 //Fetch Trendy Movies
-export async function fetchTrendyMovies() {
+export async function fetchTrendyMovies(page) {
   const response = await fetch(
-    `${BASE_URL}${categories.trending}?api_key=${API_KEY}${categories.basic}`,
+    `${BASE_URL}${categories.trending}?api_key=${API_KEY}${categories.basic}&page=${page}`,
   );
   const results = await response.json();
 
