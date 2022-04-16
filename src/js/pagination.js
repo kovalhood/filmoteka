@@ -1,10 +1,9 @@
 import Pagination from 'tui-pagination';
-import 'tui-pagination/dist/tui-pagination.css';
 
 const options = {
   totalItems: 1000,
   itemsPerPage: 10,
-  visiblePages: 4,
+  visiblePages: 5,
   page: 5,
   centerAlign: true,
   firstItemClassName: 'tui-first-child',
