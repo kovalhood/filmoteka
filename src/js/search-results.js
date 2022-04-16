@@ -22,11 +22,10 @@ const categories = {
 
 searchFormRef.addEventListener('submit', onSearchFormSubmit);
 
-
 // 1.Розмітка при загрузці сторінки (Trending Movies)
 window.addEventListener('load', async function (event) {
   fetchTrendyMovies()
-    .then(results => {
+    .then(({ results }) => {
       renderMarkup(normalizedData(results));
     })
     .catch(error => console.log(error));
@@ -76,9 +75,6 @@ function normalizedData(results) {
     if (listOfGenres.length > 3) {
       listOfGenres.splice(2, 5, 'Other');
     }
-    // originalImgPath = createImg(movie);
-    // console.log(originalImgPath);
-    // console.log(movie.poster_path);
 
     let objData = {
       ...movie,
@@ -103,14 +99,3 @@ function createGenres(arrayID, genresID) {
 function clearCardContainer() {
   moviesListRef.innerHTML = '';
 }
-
-// Images
-// function imgError(image) {
-//   image.onerror = '';
-//   image.src = './images/movies/broken-img.png';
-//   return true;
-// }
-
-// function createImg(movie) {
-//   return movie.poster_path ? `${imgPath}${movie.poster_path}` : brokenImgUrl;
-// }
