@@ -66,6 +66,10 @@
         align-items: center;
    
         padding: 0;
+
+    @media screen and (min-width: $tablet) {
+        width: 125px;
+      }
     }
     
     &--add-watched:hover,
@@ -82,6 +86,10 @@
 
         width: 110px;
         height: 44px;
+        
+    @media screen and (min-width: $tablet) {
+        width: 125px;
+      }
     }
     
     &--add-queue:hover,
