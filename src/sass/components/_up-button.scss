@@ -11,10 +11,16 @@
     }
 }
 
-.svg.icon.up-icon{
+svg.icon.up-icon{
 display: flex;
 flex-wrap: wrap;
-background-color: black;
+//background-color: black;
+}
+ 
+button#btn-scroll-up.btn.btn-up{
+    // width: 40px;
+    // height: 40px;
+    margin:4px 2px;
 }
 
 .btn-up {
@@ -23,8 +29,8 @@ background-color: black;
     border-radius: 50%;
     background-color: transparent;
 
-    right: 30px;
-    bottom: 30px;
+    right: -40px;
+    bottom: 75px;
     width: 80px;
     height: 80px;
     
