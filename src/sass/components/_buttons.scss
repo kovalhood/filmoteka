@@ -66,7 +66,10 @@ display: flex;
             background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
     @media screen and (max-width: 767px) {
         padding: 6px 27px;
-}
+    }
+    @media screen and (min-width: $tablet) {
+        width: 125.03px;
+    }
     }
     
     &--add-watched:hover,
@@ -82,6 +85,9 @@ display: flex;
         color: black;
         border: 1px solid black;
         transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    @media screen and (min-width: $tablet) {
+        width: 125.03px;
+    }
     }
     
     &--add-queue:hover,

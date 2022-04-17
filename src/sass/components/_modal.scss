@@ -57,7 +57,7 @@
     }
 
     @media screen and (min-width: $tablet){
-        padding: 40px;
+        // padding: 40px;
         width: 704px;
     }
 
@@ -101,17 +101,17 @@
   
 @media screen and (min-width: $tablet) {
    display: flex;
-//    padding-top: 40px;
-//    padding-left: 36px;
-//    padding-bottom: 40px;
-//    padding-right: 72px;
+   padding-top: 40px;
+   padding-left: 36px;
+   padding-bottom: 40px;
+   padding-right: 72px;
    }
  
 @media screen and (min-width: $desktop) {    
-//    padding-top: 40px;
-//    padding-left: 16px;
-//    padding-bottom: 40px;
-//    padding-right: 16px;
+   padding-top: 40px;
+   padding-left: 16px;
+   padding-bottom: 40px;
+   padding-right: 16px;
    }
 }
 .movie-item__poster--modal {
