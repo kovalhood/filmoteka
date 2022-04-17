@@ -93,3 +93,108 @@
         color: $accent-color;
     }
 }
+
+.movie-item__poster--modal {
+    object-fit: cover;
+    border-radius: 5px;
+
+@media screen and (min-width: $mobile) {
+    width: 240px;
+    height: 357px;
+    }  
+@media screen and (min-width: $tablet){
+    width: 264px;
+    height: 373.55px;
+    }
+
+@media screen and (min-width: $desktop) {
+    width: 375px;
+    height: 478px;
+    }
+}
+.movie-card-modal__info-box {
+@media screen and (min-width: $tablet) {
+  margin-left: 68px;
+}
+@media screen and (min-width: $desktop) {
+   margin-left: 16px;
+}
+}
+.movie-card-modal__title {
+   font-weight: 500;
+   font-size: 20px;
+   line-height: 1.15;
+   text-transform: uppercase;
+   max-width: 240px;
+ 
+   margin-top: 20px;
+   margin-bottom: 20px;
+ 
+@media screen and (min-width: $tablet) {
+  margin-top: 0;
+  max-width: 264px;
+}
+@media screen and (min-width: $desktop) {
+   font-size: 30px;
+   line-height: 1.17;
+   max-width: 391px;
+}
+}
+// .movie-stats__list {
+//    display: grid;
+//    grid-template-columns: 1fr 1fr;
+//    margin-bottom: 8px;
+// }
+.movie-stats__item {
+   font-weight: 500;
+   font-size: 12px;
+   line-height: 1.33;
+   color: #8C8C8C;
+
+}
+.movie-stats__item--data.movie-stats__item--accent {
+   color: #FFFFFF;
+   background: #FF6B01;
+   border-radius: 5px;
+   padding: 1px 9px;
+   margin-right: 5px;
+}
+.movie-stats__item--gray {
+   background: #F7F7F7;
+   border-radius: 5px;
+   padding: 1px 9px;
+
+}
+
+.movie-stats__item--data {
+   font-weight: 500;
+   font-size: 12px;
+   line-height: 1.17;
+   text-transform: uppercase;
+   color: $text-black;
+}
+
+.movie-about {
+   margin-top: 20px;
+}
+.movie-about__title {
+   font-weight: 500;
+   font-size: 12px;
+   line-height: 1.33;
+   text-transform: uppercase;
+ 
+   margin-bottom: 8px;
+}
+.movie-about__info {
+   font-weight: 500;
+   font-size: 12px;
+   line-height: 1.67;
+   max-width: 240px;
+@media screen and (min-width: $tablet) {
+   max-width: 264px;
+}
+@media screen and (min-width: $desktop) {
+   max-width: 391px;
+}
+}
+
