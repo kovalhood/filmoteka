@@ -140,11 +140,12 @@
    max-width: 391px;
 }
 }
-// .movie-stats__list {
-//    display: grid;
-//    grid-template-columns: 1fr 1fr;
-//    margin-bottom: 8px;
-// }
+.movie-stats__item {
+   display: grid;
+   grid-template-columns: 1fr 1fr;
+   margin-bottom: 8px;
+}
+
 .movie-stats__item {
    font-weight: 500;
    font-size: 12px;
@@ -157,13 +158,14 @@
    background: #FF6B01;
    border-radius: 5px;
    padding: 1px 9px;
-   margin-right: 5px;
+   margin-right: 2px;
+   width: 36px;
 }
 .movie-stats__item--gray {
    background: #F7F7F7;
    border-radius: 5px;
    padding: 1px 9px;
-
+   width: 36px;
 }
 
 .movie-stats__item--data {
