@@ -16,7 +16,7 @@ const moviesListRef = document.querySelector('.js-movies__list');
 const categories = {
   trending: '/trending/movie/week',
   querySearch: '/search/movie',
-  genre: '',
+  genre: '/genre/movie/list',
   basic: '&language=en-US&page=1&include_adult=false',
 };
 
