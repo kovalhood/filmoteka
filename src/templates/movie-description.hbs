@@ -14,35 +14,31 @@
 
 <div class='movie-card-modal__info-box'>
   <h3 class='movie-card-modal__title'>{{title}}</h3>
-  <div class='movie-stats'>
 
-    <ul class='movie-stats__list list'>
-      <li class='movie-stats__item'>
-        Vote/Votes
-        <span class='movie-stats__item--accent'>{{vote_average}} </span>
-        /
-        <span class='movie-stats__item--data group'>{{vote_count}}</span>
-      </li>
+  {{!-- <div class='movie-stats'> --}}
+  <div class="card-modal__wrapper">
+            <p class="card-modal__wrapper-category">Vote / Votes</p>
+            <p class="card-modal__wrapper-value">{{vote_average}} / {{vote_count}}</p>
+        </div>
+        <div class="card-modal__wrapper">
+            <p class="card-modal__wrapper-category">Popularity</p>
+            <p class="card-modal__wrapper-value">{{popularity}}</p>
+        </div>
+        <div class="card-modal__wrapper">
+            <p class="card-modal__wrapper-category">Original Title</p>
+            <p class="card-modal__wrapper-value">{{original_title}}</p>
+        </div>
+        <div class="card-modal__wrapper">
+            <p class="card-modal__wrapper-category">Genre</p>
+            <p class="card-modal__wrapper-value card-modal__wrapper-value--size">{{genre_ids}}</p>
+        </div>
 
-      <li class='movie-stats__item'>
-        Popularity
-        <span class='movie-stats__item--data'>{{popularity}}</span>
-      </li>
-
-      <li class='movie-stats__item'>
-        Original Title
-        <span class='movie-stats__item--data title'>{{original_title}}</span>
-      </li>
-
-      <li class='movie-stats__item'>
-        Genre
-        <span class='movie-stats__item--data'>{{genre_ids}}</span>
-      </li>
-    </ul>
-    
-    <div class="movie-about">
+<div class="movie-about">
       <p class='movie-about__title'>About</p>
       <p class='movie-about__info'>{{overview}}</p>
-    </div>
-  </div>
 </div>
+
+{{!-- </div> --}}
+</div>
+
+       
