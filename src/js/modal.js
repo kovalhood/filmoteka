@@ -1,23 +1,93 @@
 // branch: button-in-modal-window
 import modalTemplate from '../templates/movie-description.hbs';
 
+// save-to-local-storage
+
+import { fetchTrendyMovies } from './fetch-trendy-movies';
+
 const STORAGE_WATCHED = "watched-movie-list";
 const STORAGE_QUEUE = "queue-movie-list";
 const addToWatchedEl = document.querySelector("#add-to-list [data-watched]");
 const addToQueueEl = document.querySelector("#add-to-list [data-queue]");
+const inputEl = document.querySelector("#add-to-list input");
+const chooseMovieEl = document.querySelector("#add-to-list [data-choose]");
 
+
+let arrayWatched = [];
+let arrayQueue = [];
+let selectedMovie = {};
+let amount = 0;
+
+chooseMovieEl.addEventListener('click', chooseMovie);
 addToWatchedEl.addEventListener('click', addToWatchedList)
 addToQueueEl.addEventListener('click', addToQueueList)
 
 function addToWatchedList() {
-    console.log('added to watched list');
-    localStorage.removeItem(STORAGE_QUEUE);
+//check if this movie already exists in STORAGE_QUEUE
+    const tempQueue = localStorage.getItem(STORAGE_QUEUE);
+    if (tempQueue === null) {
+        return console.log('STORAGE_QUEUE is empty');
+    }
+    arrayQueue=JSON.parse(localStorage.getItem(STORAGE_QUEUE));
+    if (arrayQueue.find(part => part.id === selectedMovie.id)) {
+       console.log('already available in Queue');
+    } else {console.log('not in Queue');}
+    
+    
+   
+    // check STORAGE_WATCHED
+    const tempWatched = localStorage.getItem(STORAGE_WATCHED);
+    if (tempWatched === null) {
+        console.log('STORAGE_WATCHED is empty');
+        arrayWatched.push(selectedMovie);
+        localStorage.setItem(STORAGE_WATCHED, JSON.stringify(arrayWatched));
+    }
+
+    //check if this movie already exists in STORAGE_WATCHED
+    arrayWatched=JSON.parse(localStorage.getItem(STORAGE_WATCHED));
+    if (arrayWatched.find(part => part.id === selectedMovie.id)) {
+        return console.log('already available in Watched');
+    };
+    arrayWatched.push(selectedMovie);
+    localStorage.setItem(STORAGE_WATCHED, JSON.stringify(arrayWatched));
+
+    
+    
 }
 
 function addToQueueList() {
-    console.log('added to queue list');
-    localStorage.removeItem(STORAGE_WATCHED);  
+    const tempQueue = localStorage.getItem(STORAGE_QUEUE);
+    if (tempQueue === null) {
+        console.log('STORAGE_QUEUE is empty');
+        arrayQueue.push(selectedMovie);
+        localStorage.setItem(STORAGE_QUEUE, JSON.stringify(arrayQueue));
+    }
+    arrayQueue = JSON.parse(localStorage.getItem(STORAGE_QUEUE));
+    if (arrayQueue.find(part => part.id === selectedMovie.id)) {
+        return console.log('already available in Queue');
+    };
+    arrayQueue.push(selectedMovie);
+    localStorage.setItem(STORAGE_QUEUE, JSON.stringify(arrayQueue));
+    
 }
+
+function chooseMovie() {
+    amount =inputEl.value - 1;
+    
+    getDataMovie(amount);}
+
+function getDataMovie(amount) {
+        fetchTrendyMovies()
+        .then(results => {
+            selectedMovie = results[amount];    
+            console.log(selectedMovie);
+            console.log(selectedMovie.id);
+            const { id,original_title,vote_average,vote_count,popularity,genre_ids,overview,poster_path } = selectedMovie;
+            console.log(id, original_title, vote_average, vote_count, popularity, genre_ids, overview, poster_path);
+        });
+}
+
+
 
 // movie-card modal container 
 const movieOpenBtn = document.querySelector('[data-modal-open-btn]');
