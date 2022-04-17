@@ -1,15 +1,18 @@
 {{! Созданным элементам сразу нужно давать понятные классы для дальнейшей удобной стилизации }}
 {{#each this}}
-  <li class='movie-item' data-id=''>
-    <a href='#' class='movie-item__link link'>
-      <div class='movie-item__img-container'>
-        <img
-          class='movie-item__poster'
-          src='https://image.tmdb.org/t/p/w500{{poster_path}}'
-          alt='movie poster {{title}}'
-          loading='lazy'
-        />
-      </div>
+  <li class='movie-item' data-movie-id='{{id}}' >
+    <a class='movie-item__link link'>
+      {{#if poster_path}}
+      <img class='movie-item__poster js-img' 
+      src='https://image.tmdb.org/t/p/w500{{poster_path}}' 
+      alt='{{title}}' 
+      loading='lazy'/>
+      {{else}}
+      <img class='movie-item__poster js-img'
+      src='https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg'
+      alt=' {{title}}'
+      loading='lazy'/>
+      {{/if}}
       <div class='movie-item__text-container'>
         <h3 class='movie-item__title'>{{title}}</h3>
         <p class='movie-item__description'>
@@ -23,4 +26,5 @@
       </div>
     </a>
   </li>
+  
 {{/each}}

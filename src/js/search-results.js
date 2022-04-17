@@ -3,6 +3,9 @@ import movieCardDescTmpl from '../templates/movie-description.hbs';
 import { fetchTrendyMovies, fetchGenres } from './fetch-trendy-movies';
 import { genresNames } from './genres-names';
 import MoviesApiService from './fetch-search';
+import Pagination from 'tui-pagination';
+import createPagination from './pagination';
+// import brokenImgUrl from '../images/movies/broken-img.png';
 
 const movieApiService = new MoviesApiService();
 const BASE_URL = 'https://api.themoviedb.org/3';
@@ -11,23 +14,61 @@ const imgPath = 'https://image.tmdb.org/t/p/w500';
 
 const searchFormRef = document.querySelector('.search-form');
 const moviesListRef = document.querySelector('.js-movies__list');
-
+let page = 1;
 const categories = {
   trending: '/trending/movie/week',
   querySearch: '/search/movie',
   genre: '',
+  basic: '&language=en-US&page=1&include_adult=false',
 };
 
 searchFormRef.addEventListener('submit', onSearchFormSubmit);
 
 // 1.Розмітка при загрузці сторінки (Trending Movies)
 window.addEventListener('load', async function (event) {
-  fetchTrendyMovies()
-    .then(results => {
-      renderMarkup(normalizedData(results));
+  fetchTrendyMovies(page)
+    .then(( results ) => {
+      renderMarkup(normalizedData(results.results));
+
+      // pagination
+      const totalResult = results.total_results;
+      let currentPage = results.page;
+
+      const instance = createPagination();
+      instance.setItemsPerPage(20);
+      instance.setTotalItems(totalResult);
+      instance.movePageTo(currentPage);
+
+      instance.on('afterMove', event => {
+        const currentPage = event.page;
+        window.scrollTo({ top: 240, behavior: 'smooth' });
+        onTrendyMore(currentPage);
+      });
     })
     .catch(error => console.log(error));
 });
+
+// clearing results for pagination
+function clearPreviousResults() {
+  if (moviesListRef.hasChildNodes() === true) {
+    moviesListRef.innerHTML = '';
+  }
+  return;
+}
+
+// pagination for trendy results
+async function onTrendyMore(currentPage) {
+  try {
+    const cards = await fetchTrendyMovies(currentPage);
+    const data = cards.results;
+
+    clearPreviousResults();
+
+    renderMarkup(normalizedData(data));
+  } catch (error) {
+    console.log(error);
+  }
+}
 
 // 2. SearchForm Query searching
 function onSearchFormSubmit(e) {
@@ -47,10 +88,42 @@ function onSearchFormSubmit(e) {
 function onLoadMovies() {
   movieApiService
     .fetchMovies()
-    .then(({ results }) => {
-      renderMarkup(normalizedData(results));
+    .then(( results ) => {
+      renderMarkup(normalizedData(results.results));
+
+      // pagination
+      const totalResult = results.total_results;
+      let currentPage = results.page;
+
+      const instance = createPagination();
+      instance.setItemsPerPage(20);
+      instance.setTotalItems(totalResult);
+      instance.movePageTo(currentPage);
+
+      instance.on('afterMove', event => {
+        const currentPage = event.page;
+        // const movie = movieApiService.query;
+        window.scrollTo({ top: 240, behavior: 'smooth' });
+        onSearchMore(currentPage);
+      });
     })
     .catch(error => console.log(error));
+}
+
+// pagination for search results
+async function onSearchMore(currentPage) {
+  try {
+    movieApiService
+      .fetchMovies(currentPage)
+      .then((results) => {
+        clearPreviousResults();
+        renderMarkup(normalizedData(results.results));
+        console.log(results.results);
+      });
+
+  } catch (error) {
+    console.log(error);
+  }
 }
 
 function renderMarkup(movies) {
@@ -73,6 +146,7 @@ function normalizedData(results) {
     if (listOfGenres.length > 3) {
       listOfGenres.splice(2, 5, 'Other');
     }
+
     let objData = {
       ...movie,
       year: getYear(movie),
@@ -84,7 +158,6 @@ function normalizedData(results) {
 
 // //create the Array/List of Genres (names)
 function createGenres(arrayID, genresID) {
-  // let array = idArray.map(id => genres.filter(el => el.id === id));
   let arrayOfGenres = [];
   return arrayID.map(element => {
     if (genresID.includes(element.id)) {
@@ -93,7 +166,6 @@ function createGenres(arrayID, genresID) {
     return arrayOfGenres;
   });
 }
-
 // Clear movie cards container
 function clearCardContainer() {
   moviesListRef.innerHTML = '';
