@@ -11,17 +11,6 @@
     }
 }
 
-svg.icon.up-icon{
-display: flex;
-flex-wrap: wrap;
-//background-color: black;
-}
- 
-button#btn-scroll-up.btn.btn-up{
-    // width: 40px;
-    // height: 40px;
-    margin:4px 2px;
-}
 
 .btn-up {
     position: fixed;
@@ -52,5 +41,26 @@ display: none;
     }
 }
 
+.btn-up:hover,
+.btn-up:focus {
+    
+    animation: animate 1500ms infinite;
 
+    @keyframes animate {
+        0% {
+            transform: scale(1);
+            opacity: 0.75;
+        }
+
+        50% {
+            transform: scale(1.2);
+            opacity: 1;
+        }
+
+        100% {
+            transform: scale(1);
+            opacity: 0.75;
+        }
+    }
+}
 
