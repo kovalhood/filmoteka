@@ -1,5 +1,6 @@
 // branch: button-in-modal-window
 import modalTemplate from '../templates/movie-description.hbs';
+import { genresNames } from './genres-names';
 
 // const STORAGE_WATCHED = "watched-movie-list";
 // const STORAGE_QUEUE = "queue-movie-list";
@@ -79,5 +80,23 @@ function renderModalMarkUP(movie) {
 //fetch by film ID
 function fetchMovieInform() {
     const BASE_URL = `https://api.themoviedb.org/3/movie/${movieId}?api_key=387a2500e741e87c896db50117c25d75&language=en-US`;
-    fetch(BASE_URL).then(response => response.json().then(renderModalMarkUP));
+    fetch(BASE_URL).then(response => response.json().then((results) => {
+        renderModalMarkUP(normalizedData(results));
+    console.log(results)
+    }));
+}
+
+function normalizedData(results) {
+    createGenres(genresNames, results.genres);
+    return results;
+}
+
+function createGenres(arrayID, genresID) {
+  let arrayOfGenres = [];
+  return arrayID.map(element => {
+    if (genresID.includes(element.id)) {
+      arrayOfGenres.push(element.name);
+    }
+    return arrayOfGenres;
+  });
 }

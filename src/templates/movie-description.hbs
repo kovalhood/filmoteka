@@ -35,7 +35,9 @@
 
       <li class='movie-stats__item'>
         Genre
-        <span class='movie-stats__item--data'>{{genre_ids}}</span>
+        <span class='movie-stats__item--data'>{{#each genres}}
+            {{this.name}}{{#unless @last}},{{/unless}}
+          {{/each}}</span>
       </li>
     </ul>
     
