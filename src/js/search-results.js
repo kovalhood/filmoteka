@@ -41,7 +41,7 @@ window.addEventListener('load', async function (event) {
 
       instance.on('afterMove', event => {
         const currentPage = event.page;
-        
+        window.scrollTo({ top: 240, behavior: 'smooth' });
         onTrendyMore(currentPage);
       });
     })
@@ -103,7 +103,7 @@ function onLoadMovies() {
       instance.on('afterMove', event => {
         const currentPage = event.page;
         // const movie = movieApiService.query;
-        
+        window.scrollTo({ top: 240, behavior: 'smooth' });
         onSearchMore(currentPage);
       });
     })
