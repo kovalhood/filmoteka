@@ -142,43 +142,14 @@
     max-width: 391px;
 }
 }
-
-// .movie-stats__item--data.group {
-    // background: #F7F7F7;
-    // border-radius: 5px;
-//     display: flex;
-//     width: 36px;
-//     height: 16px;
-//     justify-content: center;
-//     align-items: center;
-// }
-// .movie-stats__item--data.accent {
-//     font-weight: 500;
-//     font-size: 12px;
-//     line-height: 1.17;
-//     text-transform: uppercase;
-//     // margin-right: 11px;
-    
-    // color: #FFFFFF;
-    // background: #FF6B01;
-    // border-radius: 5px;
-//     display: flex;
-//     width: 36px;
-//     height: 16px;
-//     justify-content: center;
-//     align-items: center;
-// }
-
 .movie-card-modal__wrapper {
     display: grid;
     grid-template-columns: 1fr 1fr;
     margin-bottom: 8px;
 }
-
 .movie-card-modal__wrapper:last-of-type {
     margin-bottom: 0px;
 }
-
 .movie-card-modal__wrapper-category {
     font-weight: 500;
     font-size: 12px;
@@ -205,7 +176,6 @@
     border-radius: 5px;
     padding: 1px 9px;
 } 
-
 .movie-about {
     margin-top: 20px;
 }
