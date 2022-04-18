@@ -1,6 +1,5 @@
 import { onPageLoad, clearCardContainer } from './search-results';
-import emptyWatchedTpl from '../templates/empty-watched.hbs';
-import emptyQueueTpl from '../templates/empty-queue.hbs';
+import { renderWatchedList, renderQueueList } from './my-library';
 
 const header = document.querySelector('.page-header');
 const logo = document.querySelector('.logo');
@@ -10,7 +9,6 @@ const libraryButtons = document.querySelector('.library-buttons');
 const tabHome = document.querySelector('.tab-home');
 const tabLibrary = document.querySelector('.tab-library');
 const moviesContainer = document.querySelector('.movies__container');
-const moviesListRef = document.querySelector('.js-movies__list');
 const pagination = document.querySelector('.pagination-thumb');
 const watchedButton = document.querySelector('.button--watched');
 const queueButton = document.querySelector('.button--queue');
@@ -21,8 +19,8 @@ tabHome.classList.add('menu__item--current');
 logo.addEventListener('click', showSearchForm);
 tabHome.addEventListener('click', showSearchForm);
 tabLibrary.addEventListener('click', showLibraryButtons);
-watchedButton.addEventListener('click', emptyWatched);
-queueButton.addEventListener('click', emptyQueue);
+watchedButton.addEventListener('click', showLibraryButtons);
+queueButton.addEventListener('click', renderQueueList);
 
 function showSearchForm() {
     homeUnderline()
@@ -37,16 +35,7 @@ function showLibraryButtons() {
 
     pagination.classList.add('hidden');
     clearCardContainer();
-    emptyWatched();
-}
-
-function emptyWatched() {
-    clearCardContainer();
-    moviesListRef.insertAdjacentHTML('beforeend', emptyWatchedTpl());
-}
-function emptyQueue() {
-    clearCardContainer();
-    moviesListRef.insertAdjacentHTML('beforeend', emptyQueueTpl());
+    renderWatchedList();
 }
 
 function homeUnderline() {
