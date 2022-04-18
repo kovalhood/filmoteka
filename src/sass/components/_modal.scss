@@ -14,7 +14,7 @@
         pointer-events: none;
     }
     
-@media screen and (max-height: 600px) {
+@media screen and (max-height: 700px) {
         overflow-y: scroll;
     }
 }
@@ -104,7 +104,7 @@
    }
 }
 .movie-item__poster--modal {
-    // object-fit: cover;
+    object-fit: cover;
     border-radius: 5px;
 
 @media screen and (min-width: $mobile) {
