@@ -14,6 +14,9 @@ const imgPath = 'https://image.tmdb.org/t/p/w500';
 
 const searchFormRef = document.querySelector('.search-form');
 const moviesListRef = document.querySelector('.js-movies__list');
+const errorRef = document.querySelector('.search__error');
+const paginationref = document.querySelector('.pagination-thumb');
+
 let page = 1;
 const categories = {
   trending: '/trending/movie/week',
@@ -27,7 +30,7 @@ searchFormRef.addEventListener('submit', onSearchFormSubmit);
 // 1.Розмітка при загрузці сторінки (Trending Movies)
 window.addEventListener('load', async function (event) {
   fetchTrendyMovies(page)
-    .then(( results ) => {
+    .then(results => {
       renderMarkup(normalizedData(results.results));
 
       // pagination
@@ -88,9 +91,11 @@ function onSearchFormSubmit(e) {
 function onLoadMovies() {
   movieApiService
     .fetchMovies()
-    .then(( results ) => {
+    .then(results => {
       renderMarkup(normalizedData(results.results));
 
+      // notification
+      showNotification(results.results);
       // pagination
       const totalResult = results.total_results;
       let currentPage = results.page;
@@ -113,14 +118,11 @@ function onLoadMovies() {
 // pagination for search results
 async function onSearchMore(currentPage) {
   try {
-    movieApiService
-      .fetchMovies(currentPage)
-      .then((results) => {
-        clearPreviousResults();
-        renderMarkup(normalizedData(results.results));
-        console.log(results.results);
-      });
-
+    movieApiService.fetchMovies(currentPage).then(results => {
+      clearPreviousResults();
+      renderMarkup(normalizedData(results.results));
+      console.log(results.results);
+    });
   } catch (error) {
     console.log(error);
   }
@@ -169,4 +171,18 @@ function createGenres(arrayID, genresID) {
 // Clear movie cards container
 function clearCardContainer() {
   moviesListRef.innerHTML = '';
+}
+
+// Notification Error
+function showNotification(results) {
+  if (!results.length) {
+    errorRef.classList.remove('hidden');
+    paginationref.classList.add('hidden');
+  } else {
+    paginationref.classList.remove('hidden');
+  }
+
+  setTimeout(() => {
+    errorRef.classList.add('hidden');
+  }, 3500);
 }
