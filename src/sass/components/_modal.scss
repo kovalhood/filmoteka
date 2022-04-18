@@ -23,7 +23,6 @@
 .movie-card__modal {
     // padding: 40px 0;
     height: 100vh;
-    
     background-color: white;
 
 @media screen and (min-width: $mobile) {
@@ -62,7 +61,7 @@
     }
 
     @media screen and (min-width: $desktop) {
-        width: 960px;
+        width: 814px;
     }
 }
 
@@ -94,24 +93,14 @@
     }
 }
 .modal__movie-card {
-   padding-top: 48px;
-   padding-left: 20px;
-   padding-bottom: 40px;
-   padding-right: 20px;
-  
+   padding: 48px 20px 40px;
 @media screen and (min-width: $tablet) {
    display: flex;
-   padding-top: 40px;
-   padding-left: 36px;
-   padding-bottom: 40px;
-   padding-right: 72px;
+   padding: 40px 72px 40px 36px;
    }
  
 @media screen and (min-width: $desktop) {    
-   padding-top: 40px;
-   padding-left: 16px;
-   padding-bottom: 40px;
-   padding-right: 16px;
+   padding: 40px 16px;
    }
 }
 .movie-item__poster--modal {
@@ -164,16 +153,14 @@
    display: grid;
    grid-template-columns: 1fr 1fr;
    margin-bottom: 8px;
-}
-.movie-stats__item:last-of-type {
-   margin-bottom: 0px;
-}
-.movie-stats__item {
+   
    font-weight: 500;
    font-size: 12px;
    line-height: 1.33;
    color: #8C8C8C;
-
+}
+.movie-stats__item:last-of-type {
+   margin-bottom: 0px;
 }
 .movie-stats__item--data.movie-stats__item--accent {
    color: #FFFFFF;
