@@ -75,6 +75,7 @@ function renderModalMarkUP(movie) {
     movieDescription.textContent = '';
     const markUp = modalTemplate(movie);
     movieDescription.insertAdjacentHTML('beforeend', markUp);
+    saveToLocalStorage()
 }
 
 //fetch by film ID
@@ -100,3 +101,82 @@ function createGenres(arrayID, genresID) {
     return arrayOfGenres;
   });
 }
+
+// save-to-local-storage
+
+function saveToLocalStorage() {
+    const STORAGE_WATCHED = "watched-movie-list";
+    const STORAGE_QUEUE = "queue-movie-list";
+    const addToWatchedEl = document.querySelector(".button--add-watched");
+    const addToQueueEl = document.querySelector(".button--add-queue");
+
+    let arrayWatched = [];
+    let arrayQueue = [];
+
+    addToWatchedEl.addEventListener('click', addToWatchedList)
+    addToQueueEl.addEventListener('click', addToQueueList)
+
+    function addToWatchedList() {
+        //check if this movie already exists in STORAGE_QUEUE
+        const tempQueue = localStorage.getItem(STORAGE_QUEUE);
+        if (tempQueue === null) {
+            console.log('STORAGE_QUEUE is empty');
+        } else {
+            arrayQueue = JSON.parse(localStorage.getItem(STORAGE_QUEUE));
+            if (arrayQueue.find(part => part === movieId)) {
+                console.log('already available in Queue');
+                const index = arrayQueue.indexOf(movieId);
+                arrayQueue.splice(index, 1);
+                localStorage.setItem(STORAGE_QUEUE, JSON.stringify(arrayQueue));
+            } else { console.log('not in Queue'); }
+        }
+        // check STORAGE_WATCHED
+        const tempWatched = localStorage.getItem(STORAGE_WATCHED);
+        if (tempWatched === null) {
+            console.log('STORAGE_WATCHED is empty');
+            arrayWatched.push(movieId);
+            localStorage.setItem(STORAGE_WATCHED, JSON.stringify(arrayWatched));
+        } else {
+
+            //check if this movie already exists in STORAGE_WATCHED
+            arrayWatched = JSON.parse(localStorage.getItem(STORAGE_WATCHED));
+            if (arrayWatched.find(part => part === movieId)) {
+                return console.log('already available in Watched');
+            };
+    
+            arrayWatched.push(movieId);
+            localStorage.setItem(STORAGE_WATCHED, JSON.stringify(arrayWatched));
+        }
+    }
+
+    function addToQueueList() {
+
+        //check if this movie already exists in STORAGE_WATCHED
+        const tempWatched = localStorage.getItem(STORAGE_WATCHED);
+        if (tempWatched === null) {
+            console.log('STORAGE_WATCHED is empty');
+        } else {
+            arrayWatched = JSON.parse(localStorage.getItem(STORAGE_WATCHED));
+            if (arrayWatched.find(part => part === movieId)) {
+                console.log('already available in Watched');
+                const index = arrayWatched.indexOf(movieId);
+                arrayWatched.splice(index, 1);
+                localStorage.setItem(STORAGE_WATCHED, JSON.stringify(arrayWatched));
+            } else { console.log('not in Watched'); }
+        }
+    
+        const tempQueue = localStorage.getItem(STORAGE_QUEUE);
+        if (tempQueue === null) {
+            console.log('STORAGE_QUEUE is empty');
+            arrayQueue.push(movieId);
+            localStorage.setItem(STORAGE_QUEUE, JSON.stringify(arrayQueue));
+        } else {
+            arrayQueue = JSON.parse(localStorage.getItem(STORAGE_QUEUE));
+            if (arrayQueue.find(part => part === movieId)) {
+                return console.log('already available in Queue');
+            }
+            arrayQueue.push(movieId);
+            localStorage.setItem(STORAGE_QUEUE, JSON.stringify(arrayQueue));
+        }
+    }
+} 
