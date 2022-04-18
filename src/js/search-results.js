@@ -28,7 +28,9 @@ const categories = {
 searchFormRef.addEventListener('submit', onSearchFormSubmit);
 
 // 1.Розмітка при загрузці сторінки (Trending Movies)
-window.addEventListener('load', async function (event) {
+window.addEventListener('load', onPageLoad);
+
+async function onPageLoad(event) {
   fetchTrendyMovies(page)
     .then(results => {
       renderMarkup(normalizedData(results.results));
@@ -49,7 +51,7 @@ window.addEventListener('load', async function (event) {
       });
     })
     .catch(error => console.log(error));
-});
+};
 
 // clearing results for pagination
 function clearPreviousResults() {
