@@ -188,3 +188,6 @@ function showNotification(results) {
     errorRef.classList.add('hidden');
   }, 3500);
 }
+
+
+export { onPageLoad, clearCardContainer };
