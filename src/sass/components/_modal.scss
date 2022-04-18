@@ -14,19 +14,18 @@
         pointer-events: none;
     }
     
-    @media screen and (max-height: 600px) {
+@media screen and (max-height: 600px) {
         overflow-y: scroll;
     }
 }
 
 /* Modal Content */
 .movie-card__modal {
-    padding: 40px 0;
+    // padding: 40px 0;
     height: 100vh;
-    
     background-color: white;
-    
-    @media screen and (min-width: $mobile) {
+
+@media screen and (min-width: $mobile) {
         position: absolute;
         top: 50%;
         left: 50%;
@@ -38,7 +37,7 @@
         transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
     
         .backdrop.is-hidden & {
-            transform: translate(-50%, -50%) scale(0.8);
+        transform: translate(-50%, -50%) scale(0.8);
         }
     }
     
@@ -57,12 +56,12 @@
     }
 
     @media screen and (min-width: $tablet){
-        padding: 40px;
+        // padding: 40px;
         width: 704px;
     }
 
     @media screen and (min-width: $desktop) {
-        width: 960px;
+        width: 814px;
     }
 }
 
@@ -93,3 +92,124 @@
         color: $accent-color;
     }
 }
+.modal__movie-card {
+   padding: 48px 20px 40px;
+@media screen and (min-width: $tablet) {
+   display: flex;
+   padding: 40px 72px 40px 36px;
+   }
+ 
+@media screen and (min-width: $desktop) {    
+   padding: 40px 16px;
+   }
+}
+.movie-item__poster--modal {
+    object-fit: cover;
+    border-radius: 5px;
+
+@media screen and (min-width: $mobile) {
+    width: 240px;
+    height: 357px;
+    }  
+@media screen and (min-width: $tablet){
+    width: 264px;
+    height: 373.55px;
+    }
+
+@media screen and (min-width: $desktop) {
+    width: 375px;
+    height: 478px;
+    }
+}
+.movie-card-modal__info-box {
+@media screen and (min-width: $tablet) {
+  margin-left: 68px;
+}
+@media screen and (min-width: $desktop) {
+   margin-left: 16px;
+}
+}
+.movie-card-modal__title {
+   font-weight: 500;
+   font-size: 20px;
+   line-height: 1.15;
+   text-transform: uppercase;
+   max-width: 240px;
+ 
+   margin-top: 20px;
+   margin-bottom: 20px;
+ 
+@media screen and (min-width: $tablet) {
+  margin-top: 0;
+  max-width: 264px;
+}
+@media screen and (min-width: $desktop) {
+   font-size: 30px;
+   line-height: 1.17;
+   max-width: 391px;
+}
+}
+.movie-stats__item {
+   display: grid;
+   grid-template-columns: 1fr 1fr;
+   margin-bottom: 8px;
+   
+   font-weight: 500;
+   font-size: 12px;
+   line-height: 1.33;
+   color: #8C8C8C;
+}
+.movie-stats__item:last-of-type {
+   margin-bottom: 0px;
+}
+.movie-stats__item--data.movie-stats__item--accent {
+   color: #FFFFFF;
+   background: #FF6B01;
+   border-radius: 5px;
+   padding: 1px 9px;
+   margin-right: 2px;
+   width: 36px;
+}
+.movie-stats__item--data.genres {
+    text-transform: none;
+}
+.movie-stats__item--gray {
+   background: #F7F7F7;
+   border-radius: 5px;
+   padding: 1px 9px;
+   width: 36px;
+}
+
+.movie-stats__item--data {
+   font-weight: 500;
+   font-size: 12px;
+   line-height: 1.17;
+   text-transform: uppercase;
+   color: $text-black;
+}
+
+.movie-about {
+   margin-top: 20px;
+}
+.movie-about__title {
+   font-weight: 500;
+   font-size: 12px;
+   line-height: 1.33;
+   text-transform: uppercase;
+ 
+   margin-bottom: 8px;
+}
+.movie-about__info {
+   font-weight: 500;
+   font-size: 12px;
+   line-height: 1.67;
+   max-width: 240px;
+   margin-bottom: 20px;
+@media screen and (min-width: $tablet) {
+   max-width: 264px;
+}
+@media screen and (min-width: $desktop) {
+   max-width: 391px;
+}
+}
+
