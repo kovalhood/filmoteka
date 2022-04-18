@@ -6,5 +6,6 @@ import '../src/js/pagination.js';
 import '../src/js/footer.js';
 import '../src/js/modal.js';
 import '../src/js/modal-footer.js';
+import '../src/js/my-library.js';
 import '../src/js/up-button.js';
 import '../src/js/slick-script.js';
