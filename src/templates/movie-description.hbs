@@ -34,8 +34,10 @@
 
       <li class='movie-stats__item'>
         Genre
+
         <span class='movie-stats__item--data genres'>{{#each genres}}
             {{this.name}}{{#unless @last}},{{/unless}}{{/each}}</span>
+
       </li>
     </ul>
     
@@ -48,7 +50,6 @@
       <button class="button button--add-watched" type="button" data-id='{{id}}'>add to watched</button>
       <button class="button button--add-queue" type="button">add to queue</button>
     </div>
-
   </div>
 
 </div>
