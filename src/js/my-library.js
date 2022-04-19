@@ -2,6 +2,7 @@ import { clearCardContainer } from './search-results';
 import emptyWatchedTpl from '../templates/empty-watched.hbs';
 import emptyQueueTpl from '../templates/empty-queue.hbs';
 import moviesTmpl from '../templates/my-library.hbs';
+import{tabLibrary} from '../js/header'
 
 if (localStorage.getItem('watched-movie-list') === null) {
   localStorage.setItem('watched-movie-list', JSON.stringify([]));
@@ -9,32 +10,32 @@ if (localStorage.getItem('watched-movie-list') === null) {
 if (localStorage.getItem('queue-movie-list') === null) {
   localStorage.setItem('queue-movie-list', JSON.stringify([]));
 }
-const moviesContainer = document.querySelector('.movies__container');
+
 const moviesListRef = document.querySelector('.js-movies__list');
-const watchedParse = JSON.parse(localStorage.getItem('watched-movie-list'));
-const queueParse = JSON.parse(localStorage.getItem('queue-movie-list'));
 
 function renderWatchedList() {
-    clearCardContainer();
+  clearCardContainer();
+  const watchedParse = JSON.parse(localStorage.getItem('watched-movie-list'));
 
   if (watchedParse.length === 0) {
-      emptyWatched();
+    emptyWatched();
   } else {
-      watchedParse.map(movieID => {
-          fetchLibraryMovie(movieID);
-      });
+    watchedParse.map(movieID => {
+        fetchLibraryMovie(movieID);
+    });
   }
 }
 
 function renderQueueList() {
-    clearCardContainer();
+  clearCardContainer();
+  const queueParse = JSON.parse(localStorage.getItem('queue-movie-list'));
 
   if (queueParse.length === 0) {
-      emptyQueue();
+    emptyQueue();
   } else {
-      queueParse.map(movieID => {
-          fetchLibraryMovie(movieID);
-      });
+    queueParse.map(movieID => {
+      fetchLibraryMovie(movieID);
+    });
   }
 }
 
@@ -48,13 +49,13 @@ function fetchLibraryMovie(movieId) {
 function renderMarkup(movies) {
   moviesListRef.insertAdjacentHTML('beforeend', moviesTmpl(movies));
 }
-// Get Year
+
 function getYear(obj) {
   const date = new Date(obj.release_date);
   let year = obj.release_date ? date.getFullYear() : '';
   return year;
 }
-// Normalize the data for Trendy Movies and Query Search
+
 function normalizedData(results) {
     let listOfGenres = results.genres;
     if (listOfGenres.length > 3) {
@@ -78,4 +79,14 @@ function emptyQueue() {
     moviesListRef.insertAdjacentHTML('beforeend', emptyQueueTpl());
 }
 
-export { renderWatchedList, renderQueueList, fetchLibraryMovie };
+function libraryButtonCheck() {
+  if (tabLibrary.classList.contains('library') && tabLibrary.classList.contains('watched')) {
+    renderWatchedList();
+  }
+  
+  if (tabLibrary.classList.contains('library') && tabLibrary.classList.contains('queue')) {
+    renderQueueList();
+  }
+}
+
+export { renderWatchedList, renderQueueList, fetchLibraryMovie, libraryButtonCheck };

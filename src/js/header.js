@@ -19,11 +19,14 @@ tabHome.classList.add('menu__item--current');
 logo.addEventListener('click', showSearchForm);
 tabHome.addEventListener('click', showSearchForm);
 tabLibrary.addEventListener('click', showLibraryButtons);
-watchedButton.addEventListener('click', showLibraryButtons);
-queueButton.addEventListener('click', renderQueueList);
+watchedButton.addEventListener('click', watchedButtonClick);
+queueButton.addEventListener('click', queueButtonClick);
 
 function showSearchForm() {
-    homeUnderline()
+    homeUnderline();
+    tabLibrary.classList.remove('library');
+    tabLibrary.classList.remove('watched');
+    tabLibrary.classList.remove('queue');
 
     pagination.classList.remove('hidden');
     clearCardContainer();
@@ -31,11 +34,31 @@ function showSearchForm() {
 }
 
 function showLibraryButtons() {
-    libraryUnderline ()
+    libraryUnderline()
+    tabLibrary.classList.add('library');
+    tabLibrary.classList.add('watched');
 
     pagination.classList.add('hidden');
     clearCardContainer();
     renderWatchedList();
+}
+
+function watchedButtonClick() {
+    tabLibrary.classList.add('library');
+    tabLibrary.classList.add('watched');
+    tabLibrary.classList.remove('queue');
+
+    clearCardContainer();
+    renderWatchedList();
+}
+
+function queueButtonClick() {
+    tabLibrary.classList.add('library');
+    tabLibrary.classList.remove('watched');
+    tabLibrary.classList.add('queue');
+
+    clearCardContainer();
+    renderQueueList();
 }
 
 function homeUnderline() {
@@ -56,3 +79,5 @@ function libraryUnderline() {
     header.classList.remove('background--search');
     header.classList.add('background--library');
 }
+
+export { tabLibrary };
