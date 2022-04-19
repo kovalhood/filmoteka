@@ -21,42 +21,29 @@
 
 /* Modal Content */
 .movie-card__modal {
-    height: 100vh;
     background-color: white;
+    position: absolute;
+    top: 0%;
+    left: 50%;
+    height: auto;
+    width: 280px;
+    transform: translateX(-50%) scale(1);
+    border-radius: 5px;
 
-@media screen and (min-width: $mobile) {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        height: auto;
-        width: 280px;
-        transform: translate(-50%, -50%) scale(1);
-        border-radius: 5px;
-    
-        transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
-    
-        .backdrop.is-hidden & {
-        transform: translate(-50%, -50%) scale(0.8);
-        }
-    }
-    
-    @media screen and (max-height: 430px) {
-        position: absolute;
-        top: 0;
-        left: 50%;
-        transform: translateX(-50%) scale(1);
-        border-radius: 5px;
-    
-        transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
-    
-        .backdrop.is-hidden & {
-            transform: translatex(-50%) scale(0.8);
-        }
+    transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+    .backdrop.is-hidden & {
+    transform: translateX(-50%) scale(0.8);
     }
 
     @media screen and (min-width: $tablet){
-        // padding: 40px;
+        top: 50%;
+        transform: translate(-50%, -50%) scale(1);
         width: 704px;
+
+        .backdrop.is-hidden & {
+            transform: translate(-50%, -50%) scale(0.8);
+        }
     }
 
     @media screen and (min-width: $desktop) {
