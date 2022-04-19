@@ -10,7 +10,7 @@ $(document).ready(function () {
   button.on('click', function () {
     $('body, html').animate({
       scrollTop: 0
-    }, 100);
+    }, 500);
     return false;
   });
 });
