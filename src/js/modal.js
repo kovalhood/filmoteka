@@ -1,6 +1,7 @@
 // branch: button-in-modal-window
 import modalTemplate from '../templates/movie-description.hbs';
 import { genresNames } from './genres-names';
+import { makeSkeletonLoader } from './skeleton-loader';
 
 // const STORAGE_WATCHED = "watched-movie-list";
 // const STORAGE_QUEUE = "queue-movie-list";
@@ -84,6 +85,8 @@ function fetchMovieInform() {
     response.json().then(results => {
       renderModalMarkUP(normalizedData(results));
       console.log(results);
+      // Skeleton
+      makeSkeletonLoader();
     }),
   );
 }

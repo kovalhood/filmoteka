@@ -2,20 +2,19 @@ import moviesTmpl from '../templates/movie-card.hbs';
 import movieCardDescTmpl from '../templates/movie-description.hbs';
 import { fetchTrendyMovies, fetchGenres } from './fetch-trendy-movies';
 import { genresNames } from './genres-names';
+import { makeSkeletonLoader } from './skeleton-loader';
 import MoviesApiService from './fetch-search';
 import Pagination from 'tui-pagination';
 import createPagination from './pagination';
 // import { windowLoader, cardLoader } from './spinner';
 
 const movieApiService = new MoviesApiService();
-const BASE_URL = 'https://api.themoviedb.org/3';
-const API_KEY = '387a2500e741e87c896db50117c25d75';
-const imgPath = 'https://image.tmdb.org/t/p/w500';
 
 const searchFormRef = document.querySelector('.search-form');
 const moviesListRef = document.querySelector('.js-movies__list');
 const errorRef = document.querySelector('.search__error');
 const paginationref = document.querySelector('.pagination-thumb');
+
 // Spinner
 // const target = document.querySelector('.window-loader__container');
 // const cardTarget = document.querySelector('.movie-card__img-wrapper ');
@@ -31,9 +30,9 @@ const categories = {
 
 searchFormRef.addEventListener('submit', onSearchFormSubmit);
 // Spinner
-function showWindowSpinner() {
-  windowLoader.spin(target);
-}
+// function showWindowSpinner() {
+//   windowLoader.spin(target);
+// }
 // function hideWindowSpinner() {
 //   windowLoader.stop();
 
@@ -52,6 +51,8 @@ async function onPageLoad(event) {
   fetchTrendyMovies(page)
     .then(results => {
       renderMarkup(normalizedData(results.results));
+      // Skeleton
+      makeSkeletonLoader();
 
       // pagination
       const totalResult = results.total_results;
@@ -88,6 +89,8 @@ async function onTrendyMore(currentPage) {
     clearPreviousResults();
 
     renderMarkup(normalizedData(data));
+    // Skeleton
+    makeSkeletonLoader();
   } catch (error) {
     console.log(error);
   }
@@ -113,6 +116,8 @@ function onLoadMovies() {
     .fetchMovies()
     .then(results => {
       renderMarkup(normalizedData(results.results));
+      makeSkeletonLoader();
+
       // hideWindowSpinner();
       // notification
       showNotification(results.results);
@@ -150,6 +155,7 @@ async function onSearchMore(currentPage) {
 
 function renderMarkup(movies) {
   // showWindowSpinner();
+
   moviesListRef.insertAdjacentHTML('beforeend', moviesTmpl(movies));
 }
 
@@ -161,6 +167,7 @@ function getYear(obj) {
 }
 
 // Normalize the data for Trendy Movies and Query Search
+
 function normalizedData(results) {
   return results.map(movie => {
     const genres = createGenres(genresNames, movie.genre_ids);
@@ -192,6 +199,7 @@ function createGenres(arrayID, genresID) {
 // Clear movie cards container
 function clearCardContainer() {
   // showWindowSpinner();
+  makeSkeletonLoader();
   moviesListRef.innerHTML = '';
 }
 
