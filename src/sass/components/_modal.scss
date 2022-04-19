@@ -106,11 +106,9 @@
 .movie-item__poster--modal {
     object-fit: cover;
     border-radius: 5px;
-
-@media screen and (min-width: $mobile) {
     width: 240px;
     height: 357px;
-    }  
+    
 @media screen and (min-width: $tablet){
     width: 264px;
     height: 373.55px;
