@@ -2,7 +2,7 @@
 {{#each this}}
   <li class='movie-item' data-movie-id='{{id}}'>
     <a class='movie-item__link link'>
-      <div class='movie-card__loader'></div>
+      {{! <div class='movie-card__loader'></div> }}
       {{#if poster_path}}
         <img
           class='movie-item__poster js-img'

@@ -1,7 +1,6 @@
 // branch: button-in-modal-window
 import modalTemplate from '../templates/movie-description.hbs';
 import { genresNames } from './genres-names';
-import { showCardLoader, hideCardLoader } from './search-results';
 
 // const STORAGE_WATCHED = "watched-movie-list";
 // const STORAGE_QUEUE = "queue-movie-list";
@@ -43,9 +42,6 @@ function onModalOpen(event) {
   movieId = isCardElement.getAttribute('data-movie-id');
   event.preventDefault();
 
-  // Spinner
-  showCardLoader();
-
   fetchMovieInform();
 
   movieBackdrop.classList.remove('is-hidden');
@@ -86,9 +82,6 @@ function fetchMovieInform() {
   const BASE_URL = `https://api.themoviedb.org/3/movie/${movieId}?api_key=387a2500e741e87c896db50117c25d75&language=en-US`;
   fetch(BASE_URL).then(response =>
     response.json().then(results => {
-      //   Spinner
-      //   hideCardLoader();
-
       renderModalMarkUP(normalizedData(results));
       console.log(results);
     }),

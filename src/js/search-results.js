@@ -5,7 +5,7 @@ import { genresNames } from './genres-names';
 import MoviesApiService from './fetch-search';
 import Pagination from 'tui-pagination';
 import createPagination from './pagination';
-import { windowLoader, cardLoader } from './spinner';
+// import { windowLoader, cardLoader } from './spinner';
 
 const movieApiService = new MoviesApiService();
 const BASE_URL = 'https://api.themoviedb.org/3';
@@ -17,10 +17,9 @@ const moviesListRef = document.querySelector('.js-movies__list');
 const errorRef = document.querySelector('.search__error');
 const paginationref = document.querySelector('.pagination-thumb');
 // Spinner
-const target = document.querySelector('.window-loader__container');
-
+// const target = document.querySelector('.window-loader__container');
 // const cardTarget = document.querySelector('.movie-card__img-wrapper ');
-const cardTarget = document.querySelector('.movie-card__loader');
+// const cardTarget = document.querySelector('.movie-card__loader');
 
 let page = 1;
 const categories = {
@@ -34,19 +33,18 @@ searchFormRef.addEventListener('submit', onSearchFormSubmit);
 // Spinner
 function showWindowSpinner() {
   windowLoader.spin(target);
-  // cardLoader.spin(cardTarget);
 }
-function hideWindowSpinner() {
-  windowLoader.stop();
-  // cardLoader.stop();
-}
+// function hideWindowSpinner() {
+//   windowLoader.stop();
 
-function showCardLoader() {
-  cardLoader.spin(cardTarget);
-}
-function hideCardLoader() {
-  cardLoader.stop();
-}
+// }
+
+// function showCardLoader() {
+//   cardLoader.spin(cardTarget);
+// }
+// function hideCardLoader() {
+//   cardLoader.stop();
+// }
 // 1.Розмітка при загрузці сторінки (Trending Movies)
 window.addEventListener('load', onPageLoad);
 
@@ -115,7 +113,7 @@ function onLoadMovies() {
     .fetchMovies()
     .then(results => {
       renderMarkup(normalizedData(results.results));
-      hideWindowSpinner();
+      // hideWindowSpinner();
       // notification
       showNotification(results.results);
       // pagination
@@ -193,7 +191,7 @@ function createGenres(arrayID, genresID) {
 }
 // Clear movie cards container
 function clearCardContainer() {
-  showWindowSpinner();
+  // showWindowSpinner();
   moviesListRef.innerHTML = '';
 }
 
@@ -212,4 +210,3 @@ function showNotification(results) {
 }
 
 export { onPageLoad, clearCardContainer };
-export { showCardLoader, hideCardLoader };
