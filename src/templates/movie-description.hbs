@@ -1,5 +1,4 @@
-<div class='movie-card__img-wrapper'>
-  {{! <div class='movie-card__loader'></div> }}
+<div class='movie-card__img-wrapper skeleton'>
   {{#if poster_path}}
     <img
       class='movie-item__poster--modal js-img'
@@ -18,11 +17,11 @@
 </div>
 
 <div class='movie-card-modal__info-box'>
-  <h3 class='movie-card-modal__title'>{{title}}</h3>
+  <h3 class='movie-card-modal__title skeleton'>{{title}}</h3>
 
   <div class='movie-stats'>
     <ul class='movie-stats__list list'>
-      <li class='movie-stats__item'>
+      <li class='movie-stats__item skeleton'>
         Vote / Votes
         <span><span
             class='movie-stats__item--data movie-stats__item--accent'
@@ -32,17 +31,17 @@
         </span>
       </li>
 
-      <li class='movie-stats__item'>
+      <li class='movie-stats__item skeleton'>
         Popularity
         <span class='movie-stats__item--data'>{{popularity}}</span>
       </li>
 
-      <li class='movie-stats__item'>
+      <li class='movie-stats__item skeleton'>
         Original Title
         <span class='movie-stats__item--data'>{{original_title}}</span>
       </li>
 
-      <li class='movie-stats__item'>
+      <li class='movie-stats__item skeleton'>
         Genre
 
         <span class='movie-stats__item--data genres'>{{#each genres}}
@@ -52,13 +51,14 @@
     </ul>
 
     <div class='movie-about'>
-      <p class='movie-about__title'>About</p>
-      <p class='movie-about__info'>{{overview}}</p>
+      <p class='movie-about__title skeleton'>About</p>
+      <p class='movie-about__info skeleton'>{{overview}}</p>
     </div>
 
     <div class='modal-buttons'>
-      <button class='button button--add-watched' type='button' data-id='{{id}}'>add to watched</button>
-      <button class='button button--add-queue' type='button'>add to queue</button>
+      <button class='button button--add-watched skeleton' type='button' data-id='{{id}}'>add to
+        watched</button>
+      <button class='button button--add-queue skeleton' type='button'>add to queue</button>
     </div>
   </div>
 
