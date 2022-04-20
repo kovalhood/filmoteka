@@ -1,0 +1,28 @@
+<li class='movie-item' data-movie-id='{{id}}' >
+    <a class='movie-item__link link'>
+      <div class='movie-item__img-container skeleton'>
+      {{#if poster_path}}
+      <img class='movie-item__poster js-img' 
+      src='https://image.tmdb.org/t/p/w500{{poster_path}}' 
+      alt='{{title}}' 
+      loading='lazy'/>
+      {{else}}
+      <img class='movie-item__poster js-img'
+      src='https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg'
+      alt=' {{title}}'
+      loading='lazy'/>
+      {{/if}}
+      </div>
+      <div class='movie-item__text-container'>
+        <h3 class='movie-item__title skeleton skeleton-text'>{{title}}</h3>
+        <p class='movie-item__description skeleton skeleton-text'>
+          {{#each genres}}
+            {{this.name}}{{#unless @last}},{{/unless}}
+          {{/each}}
+          |
+          {{year}}
+          <span class='movie-rating'>{{vote_average}}</span>
+        </p>
+      </div>
+    </a>
+  </li>

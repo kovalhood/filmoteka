@@ -2,7 +2,6 @@
     position: absolute;
     top: 0;
     left: 0;
-    
     width: 100%;
     height: 100%;
 
@@ -17,11 +16,11 @@
     border: none;
     border-radius: 50%;
     background-color: transparent;
-
     right: -40px;
-    bottom: 75px;
+    bottom: -5px;
     width: 80px;
     height: 80px;
+    overflow: hidden;
     
 }
 
@@ -36,6 +35,7 @@ background-image: url('../images/arrowUp2.svg');
 background-repeat: no-repeat;
 background-size: 50% auto;
 display: none;
+
     @media screen and (min-width: $tablet) {
         width: 136px;
     }
@@ -43,9 +43,8 @@ display: none;
 
 .btn-up:hover,
 .btn-up:focus {
-    
     animation: animate 1500ms infinite;
-
+  
     @keyframes animate {
         0% {
             transform: scale(1);
@@ -55,6 +54,7 @@ display: none;
         50% {
             transform: scale(1.2);
             opacity: 1;
+            
         }
 
         100% {
