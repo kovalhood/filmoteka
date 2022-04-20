@@ -46,4 +46,4 @@ jQuery(function(){$(".team").slick({prevArrow:"<button type='button' class='slic
 },{}],"Focm":[function(require,module,exports) {
 "use strict";require("./sass/main.scss"),require("../src/js/header.js"),require("../src/js/fetch-search.js"),require("../src/js/filter.js"),require("../src/js/search-results.js"),require("../src/js/pagination.js"),require("../src/js/modal.js"),require("../src/js/modal-footer.js"),require("../src/js/my-library.js"),require("../src/js/up-button.js"),require("../src/js/slick-script.js");
 },{"./sass/main.scss":"clu1","../src/js/header.js":"cGsR","../src/js/fetch-search.js":"FDid","../src/js/filter.js":"GDIU","../src/js/search-results.js":"UnfC","../src/js/pagination.js":"o8lo","../src/js/modal.js":"RSqK","../src/js/modal-footer.js":"hhFr","../src/js/my-library.js":"L1LD","../src/js/up-button.js":"c1Lc","../src/js/slick-script.js":"RFbx"}]},{},["Focm"], null)
-//# sourceMappingURL=/filmoteka/src.0a12814f.js.map
+//# sourceMappingURL=/filmoteka/src.32b1aed3.js.map
