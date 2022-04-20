@@ -1,7 +1,7 @@
 // branch: button-in-modal-window
 import modalTemplate from '../templates/movie-description.hbs';
 import { genresNames } from './genres-names';
-//import { libraryButtonCheck } from './my-library';
+import { libraryButtonCheck } from './my-library';
 import { makeSkeletonLoader } from './skeleton-loader';
 
 // const STORAGE_WATCHED = "watched-movie-list";
@@ -136,8 +136,7 @@ function workWithLocalStorage() {
                 console.log('already available in Watched');
                 addToWatchedEl.textContent = 'remove from watched';
                 addToWatchedEl.addEventListener('click', removeFromWatchedList);
-            } 
-        //libraryButtonCheck();     
+            }    
         }
 
         const tempQueue = localStorage.getItem(STORAGE_QUEUE);
@@ -150,7 +149,6 @@ function workWithLocalStorage() {
                 addToQueueEl.textContent = 'remove from queue';
                 addToQueueEl.addEventListener('click', removeFromQueueList);
             } 
-        //libraryButtonCheck();     
         }      
 
         function removeFromWatchedList() {
@@ -160,17 +158,17 @@ function workWithLocalStorage() {
             localStorage.setItem(STORAGE_WATCHED, JSON.stringify(arrayTemp));
             addToWatchedEl.removeEventListener('click', removeFromWatchedList);
             console.log(movieId, 'removed from watched');
-        //libraryButtonCheck(); 
+        libraryButtonCheck(); 
         }
         
         function removeFromQueueList() {
-        arrayQueue = JSON.parse(localStorage.getItem(STORAGE_QUEUE));
+        const arrayQueue = JSON.parse(localStorage.getItem(STORAGE_QUEUE));
         const index = arrayQueue.indexOf(movieId);
         arrayQueue.splice(index, 1);
         localStorage.setItem(STORAGE_QUEUE,JSON.stringify(arrayQueue));
-        addToWatchedEl.removeEventListener('click', removeFromQueueList);
-        console.log('removed from queue');
-        //libraryButtonCheck();     
+        addToQueueEl.removeEventListener('click', removeFromQueueList);
+          console.log('removed from queue');
+        libraryButtonCheck();     
         }
 
     }
@@ -184,11 +182,14 @@ function workWithLocalStorage() {
     
         addToQueueEl.addEventListener('click', event => {
             addToQueueList();
-            addToWatchedEl.removeEventListener('click', addToQueueList);
+            addToQueueEl.removeEventListener('click', addToQueueList);
         });
 
         function addToWatchedList() {
             //check if this movie already exists in STORAGE_QUEUE
+          addToWatchedEl.textContent = 'remove from watched';
+          addToQueueEl.textContent = 'add to queue';
+
             const tempQueue = localStorage.getItem(STORAGE_QUEUE);
             if (tempQueue === null) {
                 console.log('STORAGE_QUEUE is empty');
@@ -198,6 +199,7 @@ function workWithLocalStorage() {
                     console.log('already available in Queue');
                     const index = arrayQueue.indexOf(movieId);
                     arrayQueue.splice(index, 1);
+                    
                     localStorage.setItem(STORAGE_QUEUE, JSON.stringify(arrayQueue));
                 } else { console.log('not in Queue'); }
             }
@@ -212,8 +214,9 @@ function workWithLocalStorage() {
 
                 //check if this movie already exists in STORAGE_WATCHED
                 arrayWatched = JSON.parse(localStorage.getItem(STORAGE_WATCHED));
-                if (arrayWatched.find(part => part === movieId)) {
-                    return console.log('already available in Watched');
+              if (arrayWatched.find(part => part === movieId)) {
+                addToWatchedEl.textContent = 'add to watched';
+                    // return console.log('already available in Watched');
                 } else {
         
                     arrayWatched.push(movieId);
@@ -221,10 +224,12 @@ function workWithLocalStorage() {
                     //addToWatchedEl.textContent = 'added to watched';
                 }
             }
-         //libraryButtonCheck();   
+        //  libraryButtonCheck();   
         }
     
         function addToQueueList() {
+          addToQueueEl.textContent = 'remove from queue';
+          addToWatchedEl.textContent = 'add to watched';
 
             //check if this movie already exists in STORAGE_WATCHED
             const tempWatched = localStorage.getItem(STORAGE_WATCHED);
@@ -248,16 +253,17 @@ function workWithLocalStorage() {
                 //addToQueueEl.textContent = 'added to queue';
             } else {
                 arrayQueue = JSON.parse(localStorage.getItem(STORAGE_QUEUE));
-                if (arrayQueue.find(part => part === movieId)) {
-                    return console.log('already available in Queue');
-                }
+              if (arrayQueue.find(part => part === movieId)) {
+                addToQueueEl.textContent = 'add to queue';
+                    // return console.log('already available in Queue');
+              }
+              else {
                 arrayQueue.push(movieId);
                 localStorage.setItem(STORAGE_QUEUE, JSON.stringify(arrayQueue));
                 //addToQueueEl.textContent = 'added to queue';
+              }
             }
-         //libraryButtonCheck();   
+        //  libraryButtonCheck();   
         }
-
-    
     }
 }

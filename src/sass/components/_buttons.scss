@@ -1,6 +1,7 @@
 .library-buttons {
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 
 .modal-buttons{
@@ -11,9 +12,9 @@ display: flex;
 .button {
     display: inline-flex;
     justify-content: center;
-    align-items: flex-end;
+    align-items: center;
     width: 150px;
-    padding: 13px 0;
+    height: 42px;
     font-weight: 500;
     font-size: 12px;
     border-radius: 5px;
@@ -85,8 +86,7 @@ display: flex;
     }
     }
     
-    &--add-watched:hover,
-    &--add-watched:focus {
+    &--add-watched:hover {
         transform: scale(1.03);
         background-color: $button-hover-color;
     }
@@ -103,8 +103,7 @@ display: flex;
     }
     }
     
-    &--add-queue:hover,
-    &--add-queue:focus {
+    &--add-queue:hover {
         transform: scale(1.03);
     }
 }

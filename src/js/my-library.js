@@ -21,6 +21,7 @@ function renderWatchedList() {
   if (watchedParse.length === 0) {
     emptyWatched();
   } else {
+    clearCardContainer();
     watchedParse.map(movieID => {
       fetchLibraryMovie(movieID);
     });
@@ -34,6 +35,7 @@ function renderQueueList() {
   if (queueParse.length === 0) {
     emptyQueue();
   } else {
+    clearCardContainer();
     queueParse.map(movieID => {
       fetchLibraryMovie(movieID);
     });
