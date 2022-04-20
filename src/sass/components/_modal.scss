@@ -7,6 +7,7 @@
     background-color: rgba(0, 0, 0, 0.25);
     opacity: 1;
     transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 20;
     
     &.is-hidden {
         visibility: visible;
