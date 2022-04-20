@@ -2,7 +2,8 @@ import { clearCardContainer } from './search-results';
 import emptyWatchedTpl from '../templates/empty-watched.hbs';
 import emptyQueueTpl from '../templates/empty-queue.hbs';
 import moviesTmpl from '../templates/my-library.hbs';
-import{tabLibrary} from '../js/header'
+import { tabLibrary } from '../js/header'
+import { makeSkeletonLoader } from './skeleton-loader';
 
 if (localStorage.getItem('watched-movie-list') === null) {
   localStorage.setItem('watched-movie-list', JSON.stringify([]));
@@ -21,7 +22,7 @@ function renderWatchedList() {
     emptyWatched();
   } else {
     watchedParse.map(movieID => {
-        fetchLibraryMovie(movieID);
+      fetchLibraryMovie(movieID);
     });
   }
 }
@@ -43,6 +44,7 @@ function fetchLibraryMovie(movieId) {
     const BASE_URL = `https://api.themoviedb.org/3/movie/${movieId}?api_key=387a2500e741e87c896db50117c25d75&language=en-US`;
     return fetch(BASE_URL).then(response => response.json().then((results) => {
         renderMarkup(normalizedData(results));
+        makeSkeletonLoader();
     }));
 }
 

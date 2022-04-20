@@ -52,6 +52,7 @@ function onModalOpen(event) {
 
   function onBackdropClick(event) {
     if (event.target == movieBackdrop) {
+      movieDescription.textContent = '';
       movieBackdrop.classList.add('is-hidden');
       window.removeEventListener('click', onBackdropClick);
     }
@@ -60,6 +61,7 @@ function onModalOpen(event) {
   function onEscKeyPress(event) {
     const ESC_KEY_CODE = 'Escape';
     if (event.code === ESC_KEY_CODE) {
+      movieDescription.textContent = '';
       movieBackdrop.classList.add('is-hidden');
       window.removeEventListener('keydown', onEscKeyPress);
     }
@@ -67,12 +69,12 @@ function onModalOpen(event) {
 }
 
 function onModalClose() {
+  movieDescription.textContent = '';
   movieBackdrop.classList.add('is-hidden');
 }
 
 // rendering movie description
 function renderModalMarkUP(movie) {
-  movieDescription.textContent = '';
   const markUp = modalTemplate(movie);
   movieDescription.insertAdjacentHTML('beforeend', markUp);
   saveToLocalStorage();

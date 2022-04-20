@@ -1,11 +1,10 @@
 import moviesTmpl from '../templates/movie-card.hbs';
-import movieCardDescTmpl from '../templates/movie-description.hbs';
 import { fetchTrendyMovies, fetchGenres } from './fetch-trendy-movies';
 import { genresNames } from './genres-names';
 import { makeSkeletonLoader } from './skeleton-loader';
 import MoviesApiService from './fetch-search';
-import Pagination from 'tui-pagination';
 import createPagination from './pagination';
+import { clearFilter, hideFilter } from './filter';
 // import { windowLoader, cardLoader } from './spinner';
 
 const movieApiService = new MoviesApiService();
@@ -99,6 +98,9 @@ async function onTrendyMore(currentPage) {
 // 2. SearchForm Query searching
 function onSearchFormSubmit(e) {
   e.preventDefault();
+  clearFilter();
+  hideFilter();
+  document.querySelector('.tui-pagination').innerHTML = '';
 
   const query = e.currentTarget.elements.searchQuery.value;
   const normalizedQuery = query.toLowerCase().trim().split(' ').join('+');
@@ -132,7 +134,6 @@ function onLoadMovies() {
 
       instance.on('afterMove', event => {
         const currentPage = event.page;
-        // const movie = movieApiService.query;
         window.scrollTo({ top: 240, behavior: 'smooth' });
         onSearchMore(currentPage);
       });
@@ -146,7 +147,8 @@ async function onSearchMore(currentPage) {
     movieApiService.fetchMovies(currentPage).then(results => {
       clearPreviousResults();
       renderMarkup(normalizedData(results.results));
-      console.log(results.results);
+      // Skeleton
+      makeSkeletonLoader();
     });
   } catch (error) {
     console.log(error);
@@ -217,4 +219,4 @@ function showNotification(results) {
   }, 3500);
 }
 
-export { onPageLoad, clearCardContainer };
+export { onPageLoad, clearCardContainer, clearPreviousResults, renderMarkup, normalizedData };

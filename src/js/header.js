@@ -1,10 +1,11 @@
 import { onPageLoad, clearCardContainer } from './search-results';
 import { renderWatchedList, renderQueueList } from './my-library';
+import { clearFilter, hideFilter, showFilter } from './filter';
 
 const header = document.querySelector('.page-header');
 const logo = document.querySelector('.logo');
 const searchArea = document.querySelector('.search-area');
-const searchForm = document.querySelector('.search-form');
+const formInput = document.querySelector('.search-form__input');
 const libraryButtons = document.querySelector('.library-buttons');
 const tabHome = document.querySelector('.tab-home');
 const tabLibrary = document.querySelector('.tab-library');
@@ -24,6 +25,11 @@ queueButton.addEventListener('click', queueButtonClick);
 
 function showSearchForm() {
     homeUnderline();
+    formInput.value = '';
+    
+    showFilter();
+    clearFilter();
+
     tabLibrary.classList.remove('library');
     tabLibrary.classList.remove('watched');
     tabLibrary.classList.remove('queue');
@@ -35,6 +41,10 @@ function showSearchForm() {
 
 function showLibraryButtons() {
     libraryUnderline()
+
+    hideFilter();
+    clearFilter();
+
     tabLibrary.classList.add('library');
     tabLibrary.classList.add('watched');
 

@@ -27,6 +27,7 @@
     left: 50%;
     height: auto;
     width: 280px;
+    min-height: 670px;
     transform: translateX(-50%) scale(1);
     border-radius: 5px;
 
@@ -40,6 +41,7 @@
         top: 50%;
         transform: translate(-50%, -50%) scale(1);
         width: 704px;
+        min-height: 455px;
 
         .backdrop.is-hidden & {
             transform: translate(-50%, -50%) scale(0.8);
@@ -48,6 +50,7 @@
 
     @media screen and (min-width: $desktop) {
         width: 814px;
+        min-height: 558px;
     }
 }
 
@@ -97,11 +100,11 @@
     
 @media screen and (min-width: $tablet){
     width: 264px;
-    height: 373.55px;
+    height: 373px;
     }
 
 @media screen and (min-width: $desktop) {
-    width: 375px;
+    width: 330px;
     height: 478px;
     }
 }

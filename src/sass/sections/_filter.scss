@@ -1,0 +1,95 @@
+.section--filter{
+    padding-top: 20px;
+    padding-bottom: 0;
+    
+    @media screen and (min-width: $tablet) {
+        padding-top: 30px;
+    }
+}
+
+.section--trending{
+    padding-top: 20px;
+    @media screen and (min-width: $tablet) {
+        padding-top: 30px;
+    }
+}
+.filter__container{
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+.filter-input{
+    padding: 0 10px;
+
+    font-size: 14px;
+    width: 150px;
+    height: 40px;
+    cursor: pointer;
+    color: #333;
+    background-color: #F7F7F7;
+    border-radius: 5px;
+    outline: none;
+    border: none;
+
+    transition: color 0.3s cubic-bezier(0.25, 0.8, 0.25, 1),
+    background-color 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+
+    &:hover{
+        color: white;
+        background-color: $accent-color;
+    }
+
+    &:first-child{
+        margin-right: 10px;
+    }
+}
+
+option {
+    color: #333;
+    background-color: #F7F7F7;
+}
+
+.filterActive{
+    color: white;
+    background-color: $accent-color;
+}
+
+.clear-filter{
+    display: none;
+
+    @media screen and (min-width: $tablet) {
+        position: absolute;
+        top: 0;
+        right: 24%;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 40px;
+        height: 40px;
+        background-color: white;
+        color: #333;
+        border: none;
+        cursor: pointer;
+        
+        transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+        
+        &__icon {
+            fill: currentColor;
+        }
+        
+        &:hover,
+        &:focus {
+            color: $accent-color;
+        }
+    }
+
+    @media screen and (min-width: $desktop){
+        right: 30.5%;
+    }
+}
+
+.filter-hidden{
+    display: none;
+}
