@@ -5,7 +5,6 @@ import { makeSkeletonLoader } from './skeleton-loader';
 import MoviesApiService from './fetch-search';
 import createPagination from './pagination';
 import { clearFilter, hideFilter } from './filter';
-// import { windowLoader, cardLoader } from './spinner';
 
 const movieApiService = new MoviesApiService();
 
@@ -13,11 +12,6 @@ const searchFormRef = document.querySelector('.search-form');
 const moviesListRef = document.querySelector('.js-movies__list');
 const errorRef = document.querySelector('.search__error');
 const paginationref = document.querySelector('.pagination-thumb');
-
-// Spinner
-// const target = document.querySelector('.window-loader__container');
-// const cardTarget = document.querySelector('.movie-card__img-wrapper ');
-// const cardTarget = document.querySelector('.movie-card__loader');
 
 let page = 1;
 const categories = {
@@ -28,21 +22,7 @@ const categories = {
 };
 
 searchFormRef.addEventListener('submit', onSearchFormSubmit);
-// Spinner
-// function showWindowSpinner() {
-//   windowLoader.spin(target);
-// }
-// function hideWindowSpinner() {
-//   windowLoader.stop();
 
-// }
-
-// function showCardLoader() {
-//   cardLoader.spin(cardTarget);
-// }
-// function hideCardLoader() {
-//   cardLoader.stop();
-// }
 // 1.Розмітка при загрузці сторінки (Trending Movies)
 window.addEventListener('load', onPageLoad);
 
@@ -110,8 +90,8 @@ function onSearchFormSubmit(e) {
   movieApiService.resetPage();
 
   onLoadMovies();
-  // searchFormRef.reset();
 }
+
 // Render Markup for Trendy Movies and Query search movies
 function onLoadMovies() {
   movieApiService
@@ -120,9 +100,8 @@ function onLoadMovies() {
       renderMarkup(normalizedData(results.results));
       makeSkeletonLoader();
 
-      // hideWindowSpinner();
-      // notification
       showNotification(results.results);
+
       // pagination
       const totalResult = results.total_results;
       let currentPage = results.page;
@@ -156,8 +135,6 @@ async function onSearchMore(currentPage) {
 }
 
 function renderMarkup(movies) {
-  // showWindowSpinner();
-
   moviesListRef.insertAdjacentHTML('beforeend', moviesTmpl(movies));
 }
 
@@ -188,7 +165,7 @@ function normalizedData(results) {
   });
 }
 
-// //create the Array/List of Genres (names)
+//create the Array/List of Genres (names)
 function createGenres(arrayID, genresID) {
   let arrayOfGenres = [];
   return arrayID.map(element => {
@@ -198,6 +175,7 @@ function createGenres(arrayID, genresID) {
     return arrayOfGenres;
   });
 }
+
 // Clear movie cards container
 function clearCardContainer() {
   // showWindowSpinner();

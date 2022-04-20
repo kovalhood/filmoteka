@@ -6,6 +6,7 @@ const categories = {
   genre: '/genre/movie/list',
   basic: '&language=en-US&page=1&include_adult=false',
 };
+
 //Fetch Trendy Movies
 export async function fetchTrendyMovies(page) {
   const response = await fetch(

@@ -1,5 +1,4 @@
 // Skeleton
-
 export function makeSkeletonLoader() {
   const skeletons = document.querySelectorAll('.skeleton');
   skeletons.forEach(skeleton => {

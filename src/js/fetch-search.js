@@ -1,7 +1,3 @@
-// API_KEY = '387a2500e741e87c896db50117c25d75';
-
-// https://api.themoviedb.org/3/search/movie?api_key=387a2500e741e87c896db50117c25d75&query=Jack+Reacher
-
 const BASE_URL = 'https://api.themoviedb.org/3/search/movie';
 const API_KEY = '387a2500e741e87c896db50117c25d75';
 const options = {
@@ -21,13 +17,8 @@ export default class MoviesApiService {
 
     const response = await fetch(url, options);
     const movies = await response.json();
-    // this.incrementPage();
     return movies;
   }
-
-  // incrementPage() {
-  //   this.page += 1;
-  // }
 
   resetPage() {
     this.page = 1;

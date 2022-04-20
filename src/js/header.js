@@ -9,7 +9,6 @@ const formInput = document.querySelector('.search-form__input');
 const libraryButtons = document.querySelector('.library-buttons');
 const tabHome = document.querySelector('.tab-home');
 const tabLibrary = document.querySelector('.tab-library');
-const moviesContainer = document.querySelector('.movies__container');
 const pagination = document.querySelector('.pagination-thumb');
 const watchedButton = document.querySelector('.button--watched');
 const queueButton = document.querySelector('.button--queue');
