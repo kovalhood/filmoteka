@@ -38,6 +38,10 @@
     transform: translateX(-50%) scale(0.8);
     }
 
+    @media screen and (max-width: $tablet) {
+       overflow-y: scroll;
+      }
+      
     @media screen and (min-width: $tablet){
         top: 50%;
         transform: translate(-50%, -50%) scale(1);

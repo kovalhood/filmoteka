@@ -7,6 +7,7 @@ const movieOpenBtn = document.querySelector('[data-modal-open-btn]');
 const movieCloseBtn = document.querySelector('[data-modal-close-btn]');
 const movieBackdrop = document.querySelector('[data-modal-card]');
 const movieDescription = document.querySelector('.modal__movie-card');
+const body = document.querySelector("body");
 
 movieCloseBtn.addEventListener('click', onModalClose);
 movieOpenBtn.addEventListener('click', onModalOpen);
@@ -28,6 +29,7 @@ function onModalOpen(event) {
   fetchMovieInform();
 
   movieBackdrop.classList.remove('is-hidden');
+  body.style.overflow = "hidden";
 
   window.addEventListener('click', onBackdropClick);
   window.addEventListener('keydown', onEscKeyPress);
@@ -36,6 +38,7 @@ function onModalOpen(event) {
     if (event.target == movieBackdrop) {
       movieDescription.textContent = '';
       movieBackdrop.classList.add('is-hidden');
+      body.style.overflow = "auto";
       window.removeEventListener('click', onBackdropClick);
     }
   }
@@ -45,6 +48,7 @@ function onModalOpen(event) {
     if (event.code === ESC_KEY_CODE) {
       movieDescription.textContent = '';
       movieBackdrop.classList.add('is-hidden');
+      body.style.overflow = "auto";
       window.removeEventListener('keydown', onEscKeyPress);
     }
   }
@@ -53,6 +57,7 @@ function onModalOpen(event) {
 function onModalClose() {
   movieDescription.textContent = '';
   movieBackdrop.classList.add('is-hidden');
+  body.style.overflow = "auto";
 }
 
 // rendering movie description
@@ -69,7 +74,6 @@ function fetchMovieInform() {
   fetch(BASE_URL).then(response =>
     response.json().then(results => {
       renderModalMarkUP(normalizedData(results));
-      console.log(results);
 
       // Skeleton
       makeSkeletonLoader();
