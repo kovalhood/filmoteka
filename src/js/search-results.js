@@ -95,7 +95,7 @@ function onSearchFormSubmit(e) {
 // Render Markup for Trendy Movies and Query search movies
 function onLoadMovies() {
   movieApiService
-    .fetchMovies()
+    .fetchMovies(page)
     .then(results => {
       renderMarkup(normalizedData(results.results));
       makeSkeletonLoader();
